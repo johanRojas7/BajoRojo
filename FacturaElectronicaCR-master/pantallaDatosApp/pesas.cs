@@ -8,6 +8,7 @@ namespace pantallaDatosApp
 {
    public class pesas
     {
+        //Comit prueba
         public string embarcacion { get; set; }
         public string tipoPescado{ get; set; }
         public string pesa { get; set; }
