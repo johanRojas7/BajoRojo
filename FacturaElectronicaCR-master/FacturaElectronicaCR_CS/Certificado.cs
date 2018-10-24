@@ -29,14 +29,15 @@ namespace FacturaElectronicaCR_CS
             {
                 
                 CreaDSCertificados();
-                X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+                X509Store store = new X509Store("My", StoreLocation.LocalMachine);
                 store.Open((OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly));
                 X509Certificate2Collection CertCol = store.Certificates;
                 DataRow dr;
                 foreach (X509Certificate2 c in CertCol)
                 {
                     dr = dsCertificados.Tables[0].NewRow();
-                    dr["NombreCertificado"] = c.IssuerName.Name;
+                    dr["NombreCertificado"] = c.Subject;
+                    //dr["NombreCertificado"] = c.IssuerName.Name;
                     dr["Thumbprint"] = c.Thumbprint;
                     dsCertificados.Tables[0].Rows.Add(dr);
                 }
@@ -76,6 +77,11 @@ namespace FacturaElectronicaCR_CS
             {
                 throw ex;
             }
+        }
+
+        private void grdCertificados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

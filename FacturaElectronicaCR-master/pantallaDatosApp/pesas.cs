@@ -12,6 +12,15 @@ namespace pantallaDatosApp
         public string embarcacion { get; set; }
         public string tipoPescado{ get; set; }
         public string pesa { get; set; }
-     
+
+        public pesas(string pEmbarcacion, string pDetalle, string pPesa)
+        {
+            embarcacion = pEmbarcacion;
+            tipoPescado = pDetalle;
+            pesa = pPesa;
+        
+
+        }
+
     }
 }

@@ -15,6 +15,9 @@ namespace pantallaDatosApp
 {
     public partial class DatosApp : Form
     {
+
+        string liquidacionMostrar = "";
+        string pesasMostrar = "";
         public DatosApp()
         {
             InitializeComponent();
@@ -29,21 +32,42 @@ namespace pantallaDatosApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            pesasMostrar = "";
+            liquidacionMostrar = "";
             if ((txtPesas.Text == "") || (txtFolderSalidaLiquidaciones.Text == ""))
             {
-                MessageBox.Show("Algun campo esta vacio");
+                MessageBox.Show("Algun campo esta vacio.");
 
             }
             else
             {
-                liquidacion();
+
+
+                foreach (var x in liquidacion())
+                {
+
+                    liquidacionMostrar= liquidacionMostrar + "Embarcacion: " + x.embarcacion.ToString() + " Detalle: " + x.detalle + " Procedencia: " + x.procedencia + " Monto:" + x.monto+"\n";
+                   // MessageBox.Show("Embarcacion: " + x.embarcacion.ToString()+" Detalle: " + x.detalle+" Procedencia: "+x.procedencia+" Monto:"+x.monto);
+                   
+                }
+
+                foreach (var x in pesasEmbarcaciones())
+                {
+                    pesasMostrar = pesasMostrar + "Embarcacion: " + x.embarcacion.ToString() + " Detalle: " + x.tipoPescado + " Pesa: " + x.pesa;
+                   // MessageBox.Show("Embarcacion: " + x.embarcacion.ToString() + " Detalle: " + x.tipoPescado + " Pesa: " + x.pesa);
+
+                }
+
+            
             }
  
 
 
         }
 
+
+
+        //Permite cargar en una lista las liquidaciones que se encuentran en un txt
         public List<liquidaciones> liquidacion(){
            
 
@@ -51,7 +75,7 @@ namespace pantallaDatosApp
 
 
 
-            char[] delimitadores = { ','};
+            char[] delimitadores = { '^'};
 
             string fichero = txtFolderSalidaLiquidaciones.Text;
             string contenido = String.Empty;
@@ -99,7 +123,7 @@ namespace pantallaDatosApp
 
                 if (contador == 0)
                 {
-                   
+                       
                     embarca = linea;
                     contador = contador + 1;
 
@@ -112,14 +136,87 @@ namespace pantallaDatosApp
             }
 
 
-            foreach (var x in lista) {
-                MessageBox.Show("Nombre de la embarcacion: "+x.embarcacion+" Detalle: "+x.detalle+" Procedencia: "+x.procedencia+" Monto:"+x.monto);
-                
-            }
+           
 
 
             return lista;
 }
+
+
+        //Permite cargar en una lista las pesas que se encuentran en un txt
+        public List<pesas> pesasEmbarcaciones() {
+
+
+            List<pesas> lista = new List<pesas>();
+
+
+
+            char[] delimitadores = { '^' };
+
+            string fichero = txtPesas.Text;
+            string contenido = String.Empty;
+
+
+            if (File.Exists(fichero))
+            {
+                contenido = File.ReadAllText(fichero);
+                string[] lineas = contenido.Split(delimitadores);
+                int contador = 0;
+
+
+                string embarca = "";
+                string tipoPescado = "";
+                string pesa = "";
+              
+                foreach (string linea in lineas)
+                {
+                    if (contador == 3) { contador = 0; }
+
+
+                    if (contador == 2)
+                    {
+                        pesa = linea;
+
+                        pesas nuevaPesa = new pesas(embarca, tipoPescado, pesa);
+
+                        contador = 3;
+                        lista.Add(nuevaPesa);
+                        embarca = "";
+                        tipoPescado = "";
+                        pesa = "";
+                       
+
+                    }
+
+                   
+                    if (contador == 1)
+                    {
+
+                        contador = contador + 1;
+                        tipoPescado = linea;
+                    }
+
+                    if (contador == 0)
+                    {
+
+                        embarca = linea;
+                        contador = contador + 1;
+
+                    }
+
+
+                }
+
+
+            }
+
+
+         
+
+
+            return lista;
+            
+        }
 
 
 
@@ -157,6 +254,57 @@ namespace pantallaDatosApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "") { MessageBox.Show("No hay informacion Para Guardar"); }
+
+            else {
+
+                DialogResult dialogResult = MessageBox.Show("Esta apunto de guardar esta informacion, esta seguro realizarlo ", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    textBox1.Text = "";
+                    MessageBox.Show("Guardado exitosamente");
+
+                    //AQUI SE LLAMA A LA BASE DE DATOS Y SE GUARDAN LOS DATOS QUE SE ENCUENTRAN EN LA LISTA.
+                    txtFolderSalidaLiquidaciones.Text = "";
+                    txtPesas.Text = "";
+
+
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    txtFolderSalidaLiquidaciones.Text = "";
+                    txtPesas.Text = "";
+                    textBox1.Text = "";
+                    MessageBox.Show("Proceso cancelado");
+                }
+
+               
+
+
+            }
+        }
+
+        private void radioLiq_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = liquidacionMostrar;
+        }
+
+        private void radioPesas_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = pesasMostrar;
+            
         }
     }
 }

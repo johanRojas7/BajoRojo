@@ -76,7 +76,8 @@
             this.grdCertificados.Location = new System.Drawing.Point(12, 12);
             this.grdCertificados.Name = "grdCertificados";
             this.grdCertificados.Size = new System.Drawing.Size(625, 245);
-            this.grdCertificados.TabIndex = 1;            
+            this.grdCertificados.TabIndex = 1;
+            this.grdCertificados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCertificados_CellContentClick);
             this.grdCertificados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCertificados_CellContentDoubleClick);
             // 
             // NombreCertificadoDataGridViewTextBoxColumn
