@@ -57,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarEmisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarEmisor.Designer.cs">
+      <DependentUpon>AgregarEmisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarReceptor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarReceptor.Designer.cs">
+      <DependentUpon>AgregarReceptor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Certificado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,9 @@
     <Compile Include="TestFacturaXMLCR.Designer.cs">
       <DependentUpon>TestFacturaXMLCR.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarEmisor.resx">
+      <DependentUpon>AgregarEmisor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Certificado.resx">
       <DependentUpon>Certificado.cs</DependentUpon>
     </EmbeddedResource>

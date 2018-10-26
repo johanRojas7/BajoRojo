@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestFacturaXMLCR));
-            this.btnConsultaClave = new System.Windows.Forms.Button();
             this.txtAPIClave = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.txtAPIUsuario = new System.Windows.Forms.TextBox();
@@ -94,6 +93,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.TabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
@@ -105,19 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnConsultaClave
-            // 
-            this.btnConsultaClave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnConsultaClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsultaClave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnConsultaClave.Location = new System.Drawing.Point(171, 432);
-            this.btnConsultaClave.Name = "btnConsultaClave";
-            this.btnConsultaClave.Size = new System.Drawing.Size(141, 42);
-            this.btnConsultaClave.TabIndex = 49;
-            this.btnConsultaClave.Text = "Consultar por Clave";
-            this.btnConsultaClave.UseVisualStyleBackColor = true;
-            this.btnConsultaClave.Click += new System.EventHandler(this.btnConsultaClave_Click);
             // 
             // txtAPIClave
             // 
@@ -214,6 +202,7 @@
             this.btnProcesar.TabIndex = 30;
             this.btnProcesar.Text = "Procesar Factura";
             this.btnProcesar.UseVisualStyleBackColor = true;
+            this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // TabControl1
@@ -227,7 +216,7 @@
             this.TabControl1.Location = new System.Drawing.Point(325, 270);
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.SelectedIndex = 0;
-            this.TabControl1.Size = new System.Drawing.Size(385, 156);
+            this.TabControl1.Size = new System.Drawing.Size(47, 46);
             this.TabControl1.TabIndex = 25;
             // 
             // TabPage1
@@ -236,7 +225,7 @@
             this.TabPage1.Location = new System.Drawing.Point(4, 22);
             this.TabPage1.Name = "TabPage1";
             this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage1.Size = new System.Drawing.Size(377, 130);
+            this.TabPage1.Size = new System.Drawing.Size(39, 20);
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "XML Sin Firmar";
             this.TabPage1.UseVisualStyleBackColor = true;
@@ -250,7 +239,7 @@
             this.txtXMLSinFirma.Multiline = true;
             this.txtXMLSinFirma.Name = "txtXMLSinFirma";
             this.txtXMLSinFirma.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtXMLSinFirma.Size = new System.Drawing.Size(371, 127);
+            this.txtXMLSinFirma.Size = new System.Drawing.Size(33, 17);
             this.txtXMLSinFirma.TabIndex = 0;
             // 
             // TabPage2
@@ -259,7 +248,7 @@
             this.TabPage2.Location = new System.Drawing.Point(4, 22);
             this.TabPage2.Name = "TabPage2";
             this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage2.Size = new System.Drawing.Size(69, 29);
+            this.TabPage2.Size = new System.Drawing.Size(377, 130);
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "XML Firmado";
             this.TabPage2.UseVisualStyleBackColor = true;
@@ -282,7 +271,7 @@
             this.TabPage3.Controls.Add(this.txtTokenHacienda);
             this.TabPage3.Location = new System.Drawing.Point(4, 22);
             this.TabPage3.Name = "TabPage3";
-            this.TabPage3.Size = new System.Drawing.Size(69, 29);
+            this.TabPage3.Size = new System.Drawing.Size(377, 130);
             this.TabPage3.TabIndex = 2;
             this.TabPage3.Text = "Token Hacienda";
             this.TabPage3.UseVisualStyleBackColor = true;
@@ -305,7 +294,7 @@
             this.TabPage4.Controls.Add(this.txtJSONEnvio);
             this.TabPage4.Location = new System.Drawing.Point(4, 22);
             this.TabPage4.Name = "TabPage4";
-            this.TabPage4.Size = new System.Drawing.Size(69, 29);
+            this.TabPage4.Size = new System.Drawing.Size(377, 130);
             this.TabPage4.TabIndex = 3;
             this.TabPage4.Text = "JSON Envio";
             this.TabPage4.UseVisualStyleBackColor = true;
@@ -328,7 +317,7 @@
             this.TabPage5.Controls.Add(this.txtJSONRespuesta);
             this.TabPage5.Location = new System.Drawing.Point(4, 22);
             this.TabPage5.Name = "TabPage5";
-            this.TabPage5.Size = new System.Drawing.Size(69, 29);
+            this.TabPage5.Size = new System.Drawing.Size(377, 130);
             this.TabPage5.TabIndex = 4;
             this.TabPage5.Text = "JSON Respuesta";
             this.TabPage5.UseVisualStyleBackColor = true;
@@ -351,7 +340,7 @@
             this.TabPage6.Controls.Add(this.txtRespuestaHacienda);
             this.TabPage6.Location = new System.Drawing.Point(4, 22);
             this.TabPage6.Name = "TabPage6";
-            this.TabPage6.Size = new System.Drawing.Size(69, 29);
+            this.TabPage6.Size = new System.Drawing.Size(377, 130);
             this.TabPage6.TabIndex = 5;
             this.TabPage6.Text = "XML Respuesta Hacienda";
             this.TabPage6.UseVisualStyleBackColor = true;
@@ -387,7 +376,7 @@
             this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnLimpiar.Location = new System.Drawing.Point(333, 432);
+            this.btnLimpiar.Location = new System.Drawing.Point(160, 432);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(141, 42);
             this.btnLimpiar.TabIndex = 53;
@@ -826,6 +815,33 @@
             this.label18.TabIndex = 101;
             this.label18.Text = "Visualización de datos";
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.Location = new System.Drawing.Point(307, 432);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 42);
+            this.button1.TabIndex = 101;
+            this.button1.Text = "Agregar Emisor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.Location = new System.Drawing.Point(462, 432);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 42);
+            this.button2.TabIndex = 102;
+            this.button2.Text = "Agregar Receptor";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // TestFacturaXMLCR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -833,6 +849,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1027, 484);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.botonVerificar);
@@ -848,7 +866,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.ee);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.btnConsultaClave);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.TabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -880,8 +897,6 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.Button btnConsultaClave;
         internal System.Windows.Forms.TextBox txtAPIClave;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.TextBox txtAPIUsuario;
@@ -946,5 +961,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label18;
+        internal System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.Button button2;
     }
 }

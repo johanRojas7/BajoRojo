@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
+
 namespace FacturaElectronicaCR_CS
 {
     public partial class TestFacturaXMLCR : Form
     {
-
+       
         public string clave = "";
         public string numeroConsecutivo = "";
         public string xmlFactura = "";
@@ -509,40 +510,80 @@ namespace FacturaElectronicaCR_CS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string receptorSeleccionado = comboReceptor.SelectedItem.ToString();
-            string emisorSeleccionado = comboEmisor.SelectedItem.ToString();
-            string embarcacionSeleccionada = comboEmbarcacion.SelectedItem.ToString();
-            string condicionVenta = comboCondicionVenta.SelectedItem.ToString();
-            string medioDePago = comboMedioPago.SelectedItem.ToString();
-
-  
-            if (condicionVenta.Equals("Contado")) { condicionVenta = "01"; }
-            if (condicionVenta.Equals("Credito")) { condicionVenta = "02"; }
-            if (condicionVenta.Equals("Consignación")) { condicionVenta = "03"; }
-            if (condicionVenta.Equals("Apartado")) { condicionVenta = "04"; }
-            if (condicionVenta.Equals("Arrendamiento con opcion de compra")) { condicionVenta = "05"; }
-            if (condicionVenta.Equals("Arrendamiento con función financiera")) { condicionVenta = "06"; }
-            if (condicionVenta.Equals("Otros")) { condicionVenta = "99"; }
-  
-
-            if (medioDePago.Equals("Efectivo")) { medioDePago = "01"; }
-            if (medioDePago.Equals("Tarjeta")) { medioDePago = "02"; }
-            if (medioDePago.Equals("Cheque")) { medioDePago = "03"; }
-            if (medioDePago.Equals("Transferecia - deposito bancario")) { medioDePago = "04"; }
-            if (medioDePago.Equals("Recaudado por terceros")) { medioDePago = "05"; }
-            if (medioDePago.Equals("Otros")) { medioDePago = "99"; }
 
 
-            CrearConsecutivo();
-            crearClave();
-
-            ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo,clave,crearEmisor(emisorSeleccionado),crearReceptor(receptorSeleccionado),condicionVenta,"0",medioDePago,crearDetallesFactura(embarcacionSeleccionada),"CRC",1);
+            Boolean parpadear = false;
 
 
-           xmlFactura= GetXMLAsString(nuevaFactura.CreaXMLFacturaElectronica());
+            try
+            {
+                parpadear = true;
+                btnProcesar.Visible = true;
+                string receptorSeleccionado = comboReceptor.SelectedItem.ToString();
+                string emisorSeleccionado = comboEmisor.SelectedItem.ToString();
+                string embarcacionSeleccionada = comboEmbarcacion.SelectedItem.ToString();
+                string condicionVenta = comboCondicionVenta.SelectedItem.ToString();
+                string medioDePago = comboMedioPago.SelectedItem.ToString();
 
-            txtXMLSinFirma.Text= xmlFactura;
 
+                if (condicionVenta.Equals("Contado")) { condicionVenta = "01"; }
+                if (condicionVenta.Equals("Credito")) { condicionVenta = "02"; }
+                if (condicionVenta.Equals("Consignación")) { condicionVenta = "03"; }
+                if (condicionVenta.Equals("Apartado")) { condicionVenta = "04"; }
+                if (condicionVenta.Equals("Arrendamiento con opcion de compra")) { condicionVenta = "05"; }
+                if (condicionVenta.Equals("Arrendamiento con función financiera")) { condicionVenta = "06"; }
+                if (condicionVenta.Equals("Otros")) { condicionVenta = "99"; }
+
+
+                if (medioDePago.Equals("Efectivo")) { medioDePago = "01"; }
+                if (medioDePago.Equals("Tarjeta")) { medioDePago = "02"; }
+                if (medioDePago.Equals("Cheque")) { medioDePago = "03"; }
+                if (medioDePago.Equals("Transferecia - deposito bancario")) { medioDePago = "04"; }
+                if (medioDePago.Equals("Recaudado por terceros")) { medioDePago = "05"; }
+                if (medioDePago.Equals("Otros")) { medioDePago = "99"; }
+
+
+                CrearConsecutivo();
+                crearClave();
+
+                ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo, clave, crearEmisor(emisorSeleccionado), crearReceptor(receptorSeleccionado), condicionVenta, "0", medioDePago, crearDetallesFactura(embarcacionSeleccionada), "CRC", 1);
+
+
+                xmlFactura = GetXMLAsString(nuevaFactura.CreaXMLFacturaElectronica());
+
+                txtXMLSinFirma.Text = xmlFactura;
+                
+            }
+
+
+
+            catch {
+                parpadear = false;
+                btnProcesar.Visible = false;
+                MessageBox.Show("Se produjo un error, verifique que los campos esten bien."); }
+
+            if (parpadear == true) { parpadearBoton(); }
+
+
+        }
+
+
+        public void parpadearBoton() {
+
+
+            int milliseconds = 250;
+
+            for (int i = 0; i < 4; i++)
+            {
+                btnProcesar.Visible = true;
+                btnProcesar.BackColor = Color.FromArgb(125, 247, 23);
+                Application.DoEvents();
+
+                System.Threading.Thread.Sleep(milliseconds);
+                btnProcesar.BackColor = Color.FromArgb(169, 211, 255);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(milliseconds);
+            }
 
         }
 
@@ -907,7 +948,19 @@ namespace FacturaElectronicaCR_CS
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+                AgregarEmisor frm = new AgregarEmisor();
 
+                frm.Show();
+            }
+            catch {
+                MessageBox.Show("Se produjo un error, volver a intentar mas tarde.");
+            }
+            
+        }
     }
 }
