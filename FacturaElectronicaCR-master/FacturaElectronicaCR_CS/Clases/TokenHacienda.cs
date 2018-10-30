@@ -44,7 +44,8 @@ namespace FacturaElectronicaCR_CS
             }
             catch (Exception ex)
             {
-                throw ex;
+                System.Windows.Forms.MessageBox.Show("Posiblemente el usuario y/o contraseña son incorrectos");
+               
             }
         }
     }

@@ -47,11 +47,13 @@ namespace FacturaElectronicaCR_CS
     class Firma
     {
 
-        public void FirmaXML_Xades(string pathXML, string thumbprintCertificado)
+        public void FirmaXML_Xades(string pathXML, string ruta, string clave)
         {
             try
             {
-                X509Certificate2 cert = GetCertificateByThumbprint(thumbprintCertificado);
+                X509Certificate2 cert = new X509Certificate2(ruta,clave);
+
+               // X509Certificate2 cert = GetCertificateByThumbprint(thumbprintCertificado);
                 // 'Ejemplo de un valor Thumbprint: C2E8D9DA714C98ED14B88ECBC4C3E5F3BD64F125
                 // 'Si no se quiere leer el certificado del repositorio, se puede cargar el certificado directamente
                 // 'Dim cert As X509Certificate2 = New X509Certificate2("rutaArchivoCertificado", "clave")
@@ -89,7 +91,7 @@ namespace FacturaElectronicaCR_CS
         public X509Certificate2 GetCertificateByThumbprint(string thumbprintCertificado)
         {
             X509Certificate2 cert = null;
-            X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+            X509Store store = new X509Store("My", StoreLocation.LocalMachine);
             try
             {
                 store.Open((OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly));

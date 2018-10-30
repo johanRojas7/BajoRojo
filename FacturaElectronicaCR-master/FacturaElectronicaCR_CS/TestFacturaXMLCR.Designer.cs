@@ -33,9 +33,6 @@
             this.Label9 = new System.Windows.Forms.Label();
             this.txtAPIUsuario = new System.Windows.Forms.TextBox();
             this.Label8 = new System.Windows.Forms.Label();
-            this.btnCargaCertificado = new System.Windows.Forms.Button();
-            this.txtThumbprint = new System.Windows.Forms.TextBox();
-            this.Certificado = new System.Windows.Forms.Label();
             this.Label7 = new System.Windows.Forms.Label();
             this.txtFolderSalida = new System.Windows.Forms.TextBox();
             this.btnProcesar = new System.Windows.Forms.Button();
@@ -53,19 +50,11 @@
             this.TabPage6 = new System.Windows.Forms.TabPage();
             this.txtRespuestaHacienda = new System.Windows.Forms.TextBox();
             this.btnFolderSalida = new System.Windows.Forms.Button();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.rbArchivo = new System.Windows.Forms.RadioButton();
-            this.rbCertInstalado = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
             this.Label13 = new System.Windows.Forms.Label();
             this.txtCertificadoPIN = new System.Windows.Forms.TextBox();
             this.btnRutaCertificado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtPathCertificado = new System.Windows.Forms.TextBox();
-            this.comboReceptor = new System.Windows.Forms.ComboBox();
-            this.ee = new System.Windows.Forms.Label();
-            this.comboEmisor = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.comboCondicionVenta = new System.Windows.Forms.ComboBox();
@@ -94,7 +83,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.TabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
@@ -109,7 +97,7 @@
             // 
             // txtAPIClave
             // 
-            this.txtAPIClave.Location = new System.Drawing.Point(3, 334);
+            this.txtAPIClave.Location = new System.Drawing.Point(3, 227);
             this.txtAPIClave.Name = "txtAPIClave";
             this.txtAPIClave.Size = new System.Drawing.Size(264, 20);
             this.txtAPIClave.TabIndex = 48;
@@ -118,7 +106,7 @@
             // 
             this.Label9.AutoSize = true;
             this.Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Label9.Location = new System.Drawing.Point(4, 318);
+            this.Label9.Location = new System.Drawing.Point(3, 211);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(103, 13);
             this.Label9.TabIndex = 47;
@@ -126,7 +114,7 @@
             // 
             // txtAPIUsuario
             // 
-            this.txtAPIUsuario.Location = new System.Drawing.Point(3, 273);
+            this.txtAPIUsuario.Location = new System.Drawing.Point(3, 173);
             this.txtAPIUsuario.Name = "txtAPIUsuario";
             this.txtAPIUsuario.Size = new System.Drawing.Size(264, 20);
             this.txtAPIUsuario.TabIndex = 46;
@@ -135,43 +123,11 @@
             // 
             this.Label8.AutoSize = true;
             this.Label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Label8.Location = new System.Drawing.Point(4, 257);
+            this.Label8.Location = new System.Drawing.Point(4, 154);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(112, 13);
             this.Label8.TabIndex = 45;
             this.Label8.Text = "Usuario API Hacienda";
-            // 
-            // btnCargaCertificado
-            // 
-            this.btnCargaCertificado.Enabled = false;
-            this.btnCargaCertificado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnCargaCertificado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargaCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCargaCertificado.Location = new System.Drawing.Point(276, 154);
-            this.btnCargaCertificado.Name = "btnCargaCertificado";
-            this.btnCargaCertificado.Size = new System.Drawing.Size(27, 22);
-            this.btnCargaCertificado.TabIndex = 44;
-            this.btnCargaCertificado.Text = "...";
-            this.btnCargaCertificado.UseVisualStyleBackColor = true;
-            this.btnCargaCertificado.Click += new System.EventHandler(this.btnCargaCertificado_Click);
-            // 
-            // txtThumbprint
-            // 
-            this.txtThumbprint.Enabled = false;
-            this.txtThumbprint.Location = new System.Drawing.Point(3, 156);
-            this.txtThumbprint.Name = "txtThumbprint";
-            this.txtThumbprint.Size = new System.Drawing.Size(264, 20);
-            this.txtThumbprint.TabIndex = 43;
-            // 
-            // Certificado
-            // 
-            this.Certificado.AutoSize = true;
-            this.Certificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Certificado.Location = new System.Drawing.Point(3, 138);
-            this.Certificado.Name = "Certificado";
-            this.Certificado.Size = new System.Drawing.Size(102, 13);
-            this.Certificado.TabIndex = 42;
-            this.Certificado.Text = "Certificado instalado";
             // 
             // Label7
             // 
@@ -202,7 +158,6 @@
             this.btnProcesar.TabIndex = 30;
             this.btnProcesar.Text = "Procesar Factura";
             this.btnProcesar.UseVisualStyleBackColor = true;
-            this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // TabControl1
@@ -216,8 +171,9 @@
             this.TabControl1.Location = new System.Drawing.Point(325, 270);
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.SelectedIndex = 0;
-            this.TabControl1.Size = new System.Drawing.Size(47, 46);
+            this.TabControl1.Size = new System.Drawing.Size(63, 39);
             this.TabControl1.TabIndex = 25;
+            this.TabControl1.Visible = false;
             // 
             // TabPage1
             // 
@@ -225,7 +181,7 @@
             this.TabPage1.Location = new System.Drawing.Point(4, 22);
             this.TabPage1.Name = "TabPage1";
             this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage1.Size = new System.Drawing.Size(39, 20);
+            this.TabPage1.Size = new System.Drawing.Size(55, 13);
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "XML Sin Firmar";
             this.TabPage1.UseVisualStyleBackColor = true;
@@ -239,7 +195,7 @@
             this.txtXMLSinFirma.Multiline = true;
             this.txtXMLSinFirma.Name = "txtXMLSinFirma";
             this.txtXMLSinFirma.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtXMLSinFirma.Size = new System.Drawing.Size(33, 17);
+            this.txtXMLSinFirma.Size = new System.Drawing.Size(49, 10);
             this.txtXMLSinFirma.TabIndex = 0;
             // 
             // TabPage2
@@ -248,7 +204,7 @@
             this.TabPage2.Location = new System.Drawing.Point(4, 22);
             this.TabPage2.Name = "TabPage2";
             this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage2.Size = new System.Drawing.Size(377, 130);
+            this.TabPage2.Size = new System.Drawing.Size(55, 13);
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "XML Firmado";
             this.TabPage2.UseVisualStyleBackColor = true;
@@ -271,7 +227,7 @@
             this.TabPage3.Controls.Add(this.txtTokenHacienda);
             this.TabPage3.Location = new System.Drawing.Point(4, 22);
             this.TabPage3.Name = "TabPage3";
-            this.TabPage3.Size = new System.Drawing.Size(377, 130);
+            this.TabPage3.Size = new System.Drawing.Size(55, 13);
             this.TabPage3.TabIndex = 2;
             this.TabPage3.Text = "Token Hacienda";
             this.TabPage3.UseVisualStyleBackColor = true;
@@ -294,7 +250,7 @@
             this.TabPage4.Controls.Add(this.txtJSONEnvio);
             this.TabPage4.Location = new System.Drawing.Point(4, 22);
             this.TabPage4.Name = "TabPage4";
-            this.TabPage4.Size = new System.Drawing.Size(377, 130);
+            this.TabPage4.Size = new System.Drawing.Size(55, 13);
             this.TabPage4.TabIndex = 3;
             this.TabPage4.Text = "JSON Envio";
             this.TabPage4.UseVisualStyleBackColor = true;
@@ -317,7 +273,7 @@
             this.TabPage5.Controls.Add(this.txtJSONRespuesta);
             this.TabPage5.Location = new System.Drawing.Point(4, 22);
             this.TabPage5.Name = "TabPage5";
-            this.TabPage5.Size = new System.Drawing.Size(377, 130);
+            this.TabPage5.Size = new System.Drawing.Size(55, 13);
             this.TabPage5.TabIndex = 4;
             this.TabPage5.Text = "JSON Respuesta";
             this.TabPage5.UseVisualStyleBackColor = true;
@@ -340,7 +296,7 @@
             this.TabPage6.Controls.Add(this.txtRespuestaHacienda);
             this.TabPage6.Location = new System.Drawing.Point(4, 22);
             this.TabPage6.Name = "TabPage6";
-            this.TabPage6.Size = new System.Drawing.Size(377, 130);
+            this.TabPage6.Size = new System.Drawing.Size(55, 13);
             this.TabPage6.TabIndex = 5;
             this.TabPage6.Text = "XML Respuesta Hacienda";
             this.TabPage6.UseVisualStyleBackColor = true;
@@ -371,59 +327,11 @@
             this.btnFolderSalida.UseVisualStyleBackColor = true;
             this.btnFolderSalida.Click += new System.EventHandler(this.btnFolderSalida_Click);
             // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnLimpiar.Location = new System.Drawing.Point(160, 432);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(141, 42);
-            this.btnLimpiar.TabIndex = 53;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // rbArchivo
-            // 
-            this.rbArchivo.AutoSize = true;
-            this.rbArchivo.Checked = true;
-            this.rbArchivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rbArchivo.Location = new System.Drawing.Point(191, 99);
-            this.rbArchivo.Name = "rbArchivo";
-            this.rbArchivo.Size = new System.Drawing.Size(61, 17);
-            this.rbArchivo.TabIndex = 56;
-            this.rbArchivo.TabStop = true;
-            this.rbArchivo.Text = "Archivo";
-            this.rbArchivo.UseVisualStyleBackColor = true;
-            // 
-            // rbCertInstalado
-            // 
-            this.rbCertInstalado.AutoSize = true;
-            this.rbCertInstalado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rbCertInstalado.Location = new System.Drawing.Point(66, 99);
-            this.rbCertInstalado.Name = "rbCertInstalado";
-            this.rbCertInstalado.Size = new System.Drawing.Size(119, 17);
-            this.rbCertInstalado.TabIndex = 55;
-            this.rbCertInstalado.Text = "Instalado repositorio";
-            this.rbCertInstalado.UseVisualStyleBackColor = true;
-            this.rbCertInstalado.CheckedChanged += new System.EventHandler(this.rbCertInstalado_CheckedChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(3, 103);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 13);
-            this.label11.TabIndex = 54;
-            this.label11.Text = "Certificado";
-            // 
             // Label13
             // 
             this.Label13.AutoSize = true;
             this.Label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Label13.Location = new System.Drawing.Point(235, 194);
+            this.Label13.Location = new System.Drawing.Point(220, 103);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(25, 13);
             this.Label13.TabIndex = 61;
@@ -431,7 +339,7 @@
             // 
             // txtCertificadoPIN
             // 
-            this.txtCertificadoPIN.Location = new System.Drawing.Point(223, 210);
+            this.txtCertificadoPIN.Location = new System.Drawing.Point(219, 121);
             this.txtCertificadoPIN.Name = "txtCertificadoPIN";
             this.txtCertificadoPIN.Size = new System.Drawing.Size(52, 20);
             this.txtCertificadoPIN.TabIndex = 60;
@@ -441,7 +349,7 @@
             this.btnRutaCertificado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnRutaCertificado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRutaCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRutaCertificado.Location = new System.Drawing.Point(276, 210);
+            this.btnRutaCertificado.Location = new System.Drawing.Point(276, 119);
             this.btnRutaCertificado.Name = "btnRutaCertificado";
             this.btnRutaCertificado.Size = new System.Drawing.Size(27, 22);
             this.btnRutaCertificado.TabIndex = 59;
@@ -453,7 +361,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(4, 194);
+            this.label12.Location = new System.Drawing.Point(0, 103);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 58;
@@ -461,55 +369,10 @@
             // 
             // txtPathCertificado
             // 
-            this.txtPathCertificado.Location = new System.Drawing.Point(3, 210);
+            this.txtPathCertificado.Location = new System.Drawing.Point(3, 121);
             this.txtPathCertificado.Name = "txtPathCertificado";
             this.txtPathCertificado.Size = new System.Drawing.Size(210, 20);
             this.txtPathCertificado.TabIndex = 57;
-            // 
-            // comboReceptor
-            // 
-            this.comboReceptor.FormattingEnabled = true;
-            this.comboReceptor.Items.AddRange(new object[] {
-            "Gustavo Lara Lopez",
-            "Emidio Chavez Mojica",
-            "Jordan Lopez Lopez",
-            "Pedro Lara Carmona",
-            "Miguel Angel Bermudez",
-            "Vilma Garcia Lobo"});
-            this.comboReceptor.Location = new System.Drawing.Point(142, 39);
-            this.comboReceptor.Name = "comboReceptor";
-            this.comboReceptor.Size = new System.Drawing.Size(149, 21);
-            this.comboReceptor.TabIndex = 71;
-            this.comboReceptor.SelectedIndexChanged += new System.EventHandler(this.comboReceptor_SelectedIndexChanged);
-            // 
-            // ee
-            // 
-            this.ee.AutoSize = true;
-            this.ee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ee.Location = new System.Drawing.Point(26, 47);
-            this.ee.Name = "ee";
-            this.ee.Size = new System.Drawing.Size(51, 13);
-            this.ee.TabIndex = 66;
-            this.ee.Text = "Receptor";
-            // 
-            // comboEmisor
-            // 
-            this.comboEmisor.FormattingEnabled = true;
-            this.comboEmisor.Location = new System.Drawing.Point(142, 89);
-            this.comboEmisor.Name = "comboEmisor";
-            this.comboEmisor.Size = new System.Drawing.Size(149, 21);
-            this.comboEmisor.TabIndex = 83;
-            this.comboEmisor.SelectedIndexChanged += new System.EventHandler(this.comboEmisor_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(26, 97);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 13);
-            this.label15.TabIndex = 82;
-            this.label15.Text = "Emisor de factura";
             // 
             // label16
             // 
@@ -526,7 +389,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(26, 190);
+            this.label17.Location = new System.Drawing.Point(26, 78);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 13);
             this.label17.TabIndex = 85;
@@ -543,17 +406,16 @@
             "Arrendamiento con opcion de compra",
             "Arrendamiento con función financiera",
             "Otros"});
-            this.comboCondicionVenta.Location = new System.Drawing.Point(142, 182);
+            this.comboCondicionVenta.Location = new System.Drawing.Point(142, 70);
             this.comboCondicionVenta.Name = "comboCondicionVenta";
             this.comboCondicionVenta.Size = new System.Drawing.Size(149, 21);
             this.comboCondicionVenta.TabIndex = 86;
-            this.comboCondicionVenta.SelectedIndexChanged += new System.EventHandler(this.comboCondicionVenta_SelectedIndexChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(26, 230);
+            this.label20.Location = new System.Drawing.Point(26, 115);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(78, 13);
             this.label20.TabIndex = 89;
@@ -569,7 +431,7 @@
             "Transferecia - deposito bancario",
             "Recaudado por terceros            ",
             "Otros"});
-            this.comboMedioPago.Location = new System.Drawing.Point(142, 222);
+            this.comboMedioPago.Location = new System.Drawing.Point(142, 107);
             this.comboMedioPago.Name = "comboMedioPago";
             this.comboMedioPago.Size = new System.Drawing.Size(149, 21);
             this.comboMedioPago.TabIndex = 90;
@@ -578,7 +440,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(26, 140);
+            this.label22.Location = new System.Drawing.Point(26, 44);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(69, 13);
             this.label22.TabIndex = 92;
@@ -587,11 +449,22 @@
             // comboEmbarcacion
             // 
             this.comboEmbarcacion.FormattingEnabled = true;
-            this.comboEmbarcacion.Location = new System.Drawing.Point(142, 132);
+            this.comboEmbarcacion.Items.AddRange(new object[] {
+            "Don Emi",
+            "Gemelo",
+            "Santa Cruz",
+            "Punta Blanca N",
+            "La Tania",
+            "Uzziel",
+            "Dasnet",
+            "Wilbert Jose",
+            "Don Pedro",
+            "Lady Liz",
+            "Pangas Tavo"});
+            this.comboEmbarcacion.Location = new System.Drawing.Point(142, 36);
             this.comboEmbarcacion.Name = "comboEmbarcacion";
             this.comboEmbarcacion.Size = new System.Drawing.Size(149, 21);
             this.comboEmbarcacion.TabIndex = 93;
-            this.comboEmbarcacion.SelectedIndexChanged += new System.EventHandler(this.comboEmbarcacion_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -611,7 +484,7 @@
             this.botonVerificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.botonVerificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVerificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.botonVerificar.Location = new System.Drawing.Point(142, 267);
+            this.botonVerificar.Location = new System.Drawing.Point(142, 148);
             this.botonVerificar.Name = "botonVerificar";
             this.botonVerificar.Size = new System.Drawing.Size(149, 37);
             this.botonVerificar.TabIndex = 98;
@@ -752,12 +625,6 @@
             this.panel1.Controls.Add(this.Label7);
             this.panel1.Controls.Add(this.txtFolderSalida);
             this.panel1.Controls.Add(this.btnFolderSalida);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.rbCertInstalado);
-            this.panel1.Controls.Add(this.rbArchivo);
-            this.panel1.Controls.Add(this.Certificado);
-            this.panel1.Controls.Add(this.txtThumbprint);
-            this.panel1.Controls.Add(this.btnCargaCertificado);
             this.panel1.Controls.Add(this.txtPathCertificado);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.txtCertificadoPIN);
@@ -775,9 +642,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(117, 381);
+            this.pictureBox1.Location = new System.Drawing.Point(128, 287);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 66);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 66);
             this.pictureBox1.TabIndex = 97;
             this.pictureBox1.TabStop = false;
             // 
@@ -821,26 +688,13 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(307, 432);
+            this.button1.Location = new System.Drawing.Point(160, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 42);
             this.button1.TabIndex = 101;
             this.button1.Text = "Agregar Emisor";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Location = new System.Drawing.Point(462, 432);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 42);
-            this.button2.TabIndex = 102;
-            this.button2.Text = "Agregar Receptor";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // TestFacturaXMLCR
             // 
@@ -849,12 +703,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1027, 484);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.botonVerificar);
-            this.Controls.Add(this.comboReceptor);
             this.Controls.Add(this.comboEmbarcacion);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.comboMedioPago);
@@ -862,10 +714,6 @@
             this.Controls.Add(this.comboCondicionVenta);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.comboEmisor);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.ee);
-            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.TabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -901,9 +749,6 @@
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.TextBox txtAPIUsuario;
         internal System.Windows.Forms.Label Label8;
-        internal System.Windows.Forms.Button btnCargaCertificado;
-        internal System.Windows.Forms.TextBox txtThumbprint;
-        internal System.Windows.Forms.Label Certificado;
         internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.TextBox txtFolderSalida;
         internal System.Windows.Forms.Button btnProcesar;
@@ -921,19 +766,11 @@
         internal System.Windows.Forms.TabPage TabPage6;
         internal System.Windows.Forms.TextBox txtRespuestaHacienda;
         private System.Windows.Forms.Button btnFolderSalida;
-        internal System.Windows.Forms.Button btnLimpiar;
-        internal System.Windows.Forms.RadioButton rbArchivo;
-        internal System.Windows.Forms.RadioButton rbCertInstalado;
-        internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Label Label13;
         internal System.Windows.Forms.TextBox txtCertificadoPIN;
         internal System.Windows.Forms.Button btnRutaCertificado;
         internal System.Windows.Forms.Label label12;
         internal System.Windows.Forms.TextBox txtPathCertificado;
-        private System.Windows.Forms.ComboBox comboReceptor;
-        private System.Windows.Forms.Label ee;
-        private System.Windows.Forms.ComboBox comboEmisor;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboCondicionVenta;
@@ -962,6 +799,5 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label18;
         internal System.Windows.Forms.Button button1;
-        internal System.Windows.Forms.Button button2;
     }
 }

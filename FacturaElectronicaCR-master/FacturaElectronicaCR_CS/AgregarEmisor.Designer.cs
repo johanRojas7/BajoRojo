@@ -178,11 +178,13 @@
             this.textostrarEmisor.Location = new System.Drawing.Point(433, 91);
             this.textostrarEmisor.Multiline = true;
             this.textostrarEmisor.Name = "textostrarEmisor";
-            this.textostrarEmisor.Size = new System.Drawing.Size(424, 255);
+            this.textostrarEmisor.Size = new System.Drawing.Size(424, 120);
             this.textostrarEmisor.TabIndex = 15;
             // 
             // botonBuscar
             // 
+            this.botonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.botonBuscar.Location = new System.Drawing.Point(662, 59);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(75, 23);
@@ -222,6 +224,8 @@
             // 
             // botonAgregar
             // 
+            this.botonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.botonAgregar.Location = new System.Drawing.Point(203, 346);
             this.botonAgregar.Name = "botonAgregar";
             this.botonAgregar.Size = new System.Drawing.Size(172, 55);
@@ -241,6 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(869, 450);
             this.Controls.Add(this.textNombreTributante);
             this.Controls.Add(this.botonAgregar);
@@ -262,6 +267,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboEmbarcacion);
             this.Name = "AgregarEmisor";
+            this.Opacity = 0.85D;
             this.Text = "AgregarEmisor";
             this.Load += new System.EventHandler(this.AgregarEmisor_Load);
             this.ResumeLayout(false);

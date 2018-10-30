@@ -19,6 +19,7 @@ namespace FacturaElectronicaCR_CS.ClasesDatos
     using System.Security;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Forms;
     using Microsoft.VisualBasic;
 
     public class FacturaElectronicaCR
@@ -187,12 +188,12 @@ namespace FacturaElectronicaCR_CS.ClasesDatos
                     
                     writer.WriteStartElement("LineaDetalle");
                    
-                    writer.WriteElementString("NumeropLinea", xt.numeroLinea.ToString());
+                    writer.WriteElementString("NumeroLinea", xt.numeroDeLinea.ToString());
 
                     writer.WriteStartElement("Codigo");
                    
-                    writer.WriteElementString("Tipo", xt.articuloTipo.ToString());
-                    writer.WriteElementString("Codigo", xt.articuloCodigo.ToString());
+                    writer.WriteElementString("Tipo", xt.tipoDeArticulo.ToString());
+                    writer.WriteElementString("Codigo", xt.codigoArticulo.ToString());
                     writer.WriteEndElement(); // 'Codigo
 
                     writer.WriteElementString("Cantidad", xt.cantidad.ToString());
@@ -202,14 +203,14 @@ namespace FacturaElectronicaCR_CS.ClasesDatos
                     writer.WriteElementString("PrecioUnitario", String.Format("{0:N3}", xt.precioUnitario.ToString()));
                     writer.WriteElementString("MontoTotal", String.Format("{0:N3}",xt.montoTotal.ToString()));
                     writer.WriteElementString("MontoDescuento", String.Format("{0:N3}", xt.montoDescuento.ToString()));
-                    writer.WriteElementString("NaturalezaDescuento", xt.natualezaDescuento.ToString());
+                    writer.WriteElementString("NaturalezaDescuento", xt.NaturalezaDescuento.ToString());
                     writer.WriteElementString("SubTotal", String.Format("{0:N3}", xt.subtotal.ToString()));
 
                     writer.WriteStartElement("Impuesto");
                     writer.WriteElementString("Codigo", xt.codigoImpuesto.ToString());
                     writer.WriteElementString("Tarifa", xt.impuestoTarifa.ToString());
-                    writer.WriteElementString("Monto", xt.impuestoMonto.ToString());
-                    writer.WriteEndElement(); // Impuesto
+                   writer.WriteElementString("Monto", xt.impuestoMonto.ToString());
+                  writer.WriteEndElement(); // Impuesto
 
                     writer.WriteElementString("MontoTotalLinea", String.Format("{0:N3}", xt.montoTotalLinea.ToString()));
 
@@ -227,27 +228,52 @@ namespace FacturaElectronicaCR_CS.ClasesDatos
                 writer.WriteElementString("TipoCambio", "1.00000");
                 // =================
 
+                //SACAR CALCULOS PARA FACTURA
+
+               
+                
+                double totalComprobante=0;
+
+                double montoTotalImpuesto = 0;
+
+               foreach (var y in _dsDetalle) {
+
+                   
+                    montoTotalImpuesto = montoTotalImpuesto + y.impuestoMonto;
+
+
+
+               }
+
+                totalComprobante = 0 + montoTotalImpuesto;
+                
+
+
+                
+
                 // 'En esta parte los totales se pueden ir sumando linea a linea cuando se carga el detalle
                 // 'ó se pasa como parametros al inicio
                 writer.WriteElementString("TotalServGravados", "0.00000");
                 writer.WriteElementString("TotalServExentos", "0.00000");
-                writer.WriteElementString("TotalMercanciasGravadas", "");
-                writer.WriteElementString("TotalMercanciasExentas", "");
 
-                writer.WriteElementString("TotalGravado", "");
-                writer.WriteElementString("TotalExento", "");
 
-                writer.WriteElementString("TotalVenta", "");
-                writer.WriteElementString("TotalDescuentos", "");
-                writer.WriteElementString("TotalVentaNeta", "");
-                writer.WriteElementString("TotalImpuesto", "");
-                writer.WriteElementString("TotalComprobante", "");
+                writer.WriteElementString("TotalMercanciasGravadas", "0.00000");
+                writer.WriteElementString("TotalMercanciasExentas", "0.00000");
+
+                writer.WriteElementString("TotalGravado", "0.00000");
+                writer.WriteElementString("TotalExento", "0.00000");
+
+                writer.WriteElementString("TotalVenta", "0.00000");
+                writer.WriteElementString("TotalDescuentos", "0.00000");
+                writer.WriteElementString("TotalVentaNeta", "0.00000");
+                writer.WriteElementString("TotalImpuesto", String.Format("{0:N3}", montoTotalImpuesto.ToString()));
+                writer.WriteElementString("TotalComprobante", String.Format("{0:N3}", totalComprobante.ToString()));
                 writer.WriteEndElement(); // ResumenFactura
 
                 // 'Estos datos te los tiene que brindar los encargados del area financiera
                 writer.WriteStartElement("Normativa");
-                writer.WriteElementString("NumeroResolucion", "DGT-R-48-2018");
-                writer.WriteElementString("FechaResolucion", "07-10-2018 01:00:00");
+                writer.WriteElementString("NumeroResolucion", "DGT-R-48-2016");
+                writer.WriteElementString("FechaResolucion", "07-10-2016 01:00:00");
                 writer.WriteEndElement(); // Normativa
 
                 // 'Aqui va la firma, despues la agregamos.

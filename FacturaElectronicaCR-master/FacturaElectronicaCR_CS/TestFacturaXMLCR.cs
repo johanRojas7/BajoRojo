@@ -14,7 +14,8 @@ namespace FacturaElectronicaCR_CS
 {
     public partial class TestFacturaXMLCR : Form
     {
-       
+
+        public string numeroComprobante = "0000000001";
         public string clave = "";
         public string numeroConsecutivo = "";
         public string xmlFactura = "";
@@ -26,13 +27,8 @@ namespace FacturaElectronicaCR_CS
         private void btnProcesar_Click(object sender, EventArgs e)
         {
 
-           
 
-
-
-
-
-
+            
             try
             {
                 if (this.txtXMLSinFirma.Text.Trim().Length == 0)
@@ -42,12 +38,9 @@ namespace FacturaElectronicaCR_CS
                     return;
                 }
 
-                if ((this.txtThumbprint.Text.Trim().Length == 0) & (rbCertInstalado.Checked))
-                {
-                    MessageBox.Show("Debe indicar el certificado a usar en la firma");
-                    CargaCertificado();
-                }
-                else if ((this.txtPathCertificado.Text.Trim().Length == 0))
+               
+
+                if ((this.txtPathCertificado.Text.Trim().Length == 0))
                 {
                     MessageBox.Show("Debe indicar la ruta del certificado a usar en la firma");
                     BuscaCertificado();
@@ -98,20 +91,7 @@ namespace FacturaElectronicaCR_CS
             }
         }
 
-        private void LimpiaDatos()
-        {
-            this.txtConsecutivo.ResetText();
-            this.txtClave.ResetText();
-            this.txtEmisorNumero.ResetText();
-            this.txtEmisorTipo.ResetText();
-            this.txtReceptorNumero.ResetText();
-            this.txtReceptorTipo.ResetText();
-            this.txtXMLFirmado.ResetText();
-            this.txtJSONEnvio.ResetText();
-            this.txtJSONRespuesta.ResetText();
-            this.txtRespuestaHacienda.ResetText();
-            this.txtTokenHacienda.ResetText();
-        }
+       
 
         public void Procesa(string xmlFactura)
         {
@@ -132,7 +112,7 @@ namespace FacturaElectronicaCR_CS
             xmlDocSF = null;
             
             Firma _firma = new Firma();
-            _firma.FirmaXML_Xades((directorio + nombreArchivo), this.txtThumbprint.Text);
+            _firma.FirmaXML_Xades((directorio + nombreArchivo),this.txtPathCertificado.Text,this.txtCertificadoPIN.Text);
 
             XmlDocument xmlElectronica = new XmlDocument();
             xmlElectronica.Load((directorio + (nombreArchivo + "_02_Firmado.xml")));
@@ -280,32 +260,6 @@ namespace FacturaElectronicaCR_CS
             }
         }
 
-        private void btnCargaCertificado_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CargaCertificado();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void CargaCertificado()
-        {
-            try
-            {
-                Certificado iCertificados = new Certificado();
-                iCertificados.ShowDialog();
-                txtThumbprint.Text = iCertificados.thumbprint;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         private void btnFolderSalida_Click(object sender, EventArgs e)
         {
             try
@@ -336,11 +290,6 @@ namespace FacturaElectronicaCR_CS
             }
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            this.LimpiaDatos();
-        }
-
         private void btnRutaCertificado_Click(object sender, EventArgs e)
         {
             try
@@ -367,45 +316,6 @@ namespace FacturaElectronicaCR_CS
             }
         }
 
-        private void rbCertInstalado_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidaCamposHabilitados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void ValidaCamposHabilitados()
-        {
-            try
-            {
-                if (rbCertInstalado.Checked)
-                {
-                    txtThumbprint.Enabled = true;
-                    btnCargaCertificado.Enabled = true;
-                    txtPathCertificado.Enabled = false;
-                    btnRutaCertificado.Enabled = false;
-                    txtCertificadoPIN.Enabled = false;
-                }
-                else
-                {
-                    txtThumbprint.Enabled = false;
-                    btnCargaCertificado.Enabled = false;
-                    txtPathCertificado.Enabled = true;
-                    btnRutaCertificado.Enabled = true;
-                    txtCertificadoPIN.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         private void btnConsecutivo_Clave_Click(object sender, EventArgs e)
         {
             try
@@ -420,93 +330,8 @@ namespace FacturaElectronicaCR_CS
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void facturador_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void comboCondicionVenta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-           
-
-        }
-
-        private void comboEmbarcacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-            
-
-
-        }
-
-        private void comboEmisor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-            comboEmbarcacion.Items.Clear();
-
-            if (comboEmisor.SelectedItem.Equals("Gustavo Lara Lopez"))
-            {
-                comboEmbarcacion.Items.Add("Don Emi");
-                comboEmbarcacion.Items.Add("Gemelo");
-                comboEmbarcacion.Items.Add("Pangas Tavo");
-
-            }
-
-            if (comboEmisor.SelectedItem.Equals("Emidio Chavez Mojica"))
-            {
-
-                comboEmbarcacion.Items.Add("Santa Cruz");
-
-            }
-
-
-            if (comboEmisor.SelectedItem.Equals("Jordan Lopez Lopez"))
-            {
-                comboEmbarcacion.Items.Add("Punta Blanca N");
-                comboEmbarcacion.Items.Add("Uzziel");
-            }
-
-
-            if (comboEmisor.SelectedItem.Equals("Pedro Lara Carmona"))
-            {
-                comboEmbarcacion.Items.Add("La Tania");
-                comboEmbarcacion.Items.Add("Don Pedro");
-            }
-
-
-            if (comboEmisor.SelectedItem.Equals("Miguel Angel Bermudez"))
-            {
-                comboEmbarcacion.Items.Add("Dasnet");
-            }
-
-            if (comboEmisor.SelectedItem.Equals("Vilma Garcia Lobo"))
-            {
-
-                comboEmbarcacion.Items.Add(" Wilbert Jose");
-                comboEmbarcacion.Items.Add(" Lady Liz");
-            }
-        }
-
-        private void comboReceptor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string nom = comboReceptor.SelectedItem.ToString();
-
-            comboEmisor.Items.Clear();
-
-
-            if (!nom.Equals("Gustavo Lara Lopez")) { comboEmisor.Items.Add("Gustavo Lara Lopez"); }
-            if (!nom.Equals("Emidio Chavez Mojica")) { comboEmisor.Items.Add("Emidio Chavez Mojica"); }
-            if (!nom.Equals("Jordan Lopez Lopez")) { comboEmisor.Items.Add("Jordan Lopez Lopez"); }
-            if (!nom.Equals("Pedro Lara Carmona")) { comboEmisor.Items.Add("Pedro Lara Carmona"); }
-            if (!nom.Equals("Miguel Angel Bermudez")) { comboEmisor.Items.Add("Miguel Angel Bermudez"); }
-            if (!nom.Equals("Vilma Garcia Lobo")) { comboEmisor.Items.Add("Vilma Garcia Lobo"); }
-
-        }
+        
+      
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -519,11 +344,15 @@ namespace FacturaElectronicaCR_CS
             {
                 parpadear = true;
                 btnProcesar.Visible = true;
-                string receptorSeleccionado = comboReceptor.SelectedItem.ToString();
-                string emisorSeleccionado = comboEmisor.SelectedItem.ToString();
+                
+                
                 string embarcacionSeleccionada = comboEmbarcacion.SelectedItem.ToString();
                 string condicionVenta = comboCondicionVenta.SelectedItem.ToString();
                 string medioDePago = comboMedioPago.SelectedItem.ToString();
+
+
+           
+                
 
 
                 if (condicionVenta.Equals("Contado")) { condicionVenta = "01"; }
@@ -546,7 +375,7 @@ namespace FacturaElectronicaCR_CS
                 CrearConsecutivo();
                 crearClave();
 
-                ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo, clave, crearEmisor(emisorSeleccionado), crearReceptor(receptorSeleccionado), condicionVenta, "0", medioDePago, crearDetallesFactura(embarcacionSeleccionada), "CRC", 1);
+                ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo, clave, crearEmisor(embarcacionSeleccionada), crearReceptor("Bajo Rojo"), condicionVenta, "0", medioDePago, crearDetallesFactura(embarcacionSeleccionada), "CRC", 1);
 
 
                 xmlFactura = GetXMLAsString(nuevaFactura.CreaXMLFacturaElectronica());
@@ -566,7 +395,6 @@ namespace FacturaElectronicaCR_CS
 
 
         }
-
 
         public void parpadearBoton() {
 
@@ -596,16 +424,16 @@ namespace FacturaElectronicaCR_CS
             //Terminal o punto de venta(codigo punto de venta), en este caso como solo es uno es: 00001
             //Numero id es el numero de el emisor en hacienda , ejemplo de cedula juridica = 3101715950
 
-            DateTime fecha = new DateTime();
+            DateTime fecha = DateTime.Now;
 
-            string codigoSeguridad = CreaCodigoSeguridad("01", "001", "00001", fecha.Date, "0000000001");
+            string codigoSeguridad = CreaCodigoSeguridad("01", "001", "00001", fecha.Date, numeroComprobante);
+            
+            
 
-            clave = CreaClave("506",fecha.Day.ToString(),fecha.Month.ToString(),fecha.Year.ToString(), "3101715950", numeroConsecutivo,"1",codigoSeguridad);
+            clave = CreaClave("506",fecha.Day.ToString(),fecha.Month.ToString(),fecha.Year.ToString(), "003101715950", numeroConsecutivo,"1",codigoSeguridad);
 
         }
-
-
-
+        
         public void CrearConsecutivo() {
 
             //Tipo de comprobante 01-FACTURA ELECTRONICA, 02 NOTA DE DEBITO
@@ -615,7 +443,7 @@ namespace FacturaElectronicaCR_CS
             // un ejemplo de numero de factura es :  0000000001 , este numero debe ir cambiando
             //Por ejemplo para la segunda factura debe ser: 0000000002
 
-            numeroConsecutivo = CreaNumeroConsecutivo("001 ", "00001", "01", "0000000001");
+            numeroConsecutivo = CreaNumeroConsecutivo("001 ", "00001", "01", numeroComprobante);
 
         }
 
@@ -627,7 +455,7 @@ namespace FacturaElectronicaCR_CS
         public ClasesDatos.Receptor crearReceptor(string receptor) {
 
             //Con el string de receptor se busca en la base de datos todo los datos del receptor
-            ClasesDatos.Receptor nuevoReceptor = new ClasesDatos.Receptor("nombre","tipoId","numeroid","provincia","canton","distrito","barrio","otrasse","506",111,"correo");
+            ClasesDatos.Receptor nuevoReceptor = new ClasesDatos.Receptor("EL BAJO ROJO DEL PACIFICO SOCIEDAD ANONIMA", "02", "3101715950", "5","01","04","04","Cuajiniquil","506",26791023,"bajorojoj@gmail.com");
 
             return nuevoReceptor;
 
@@ -645,7 +473,9 @@ namespace FacturaElectronicaCR_CS
            // 04 NITE
 
 
-            ClasesDatos.Emisor nuevoEmisor = new ClasesDatos.Emisor("El Bajo Rojo del Pacifico S.A","02","003101715950","Guanacaste","La Cruz","Santa Elena","barrio","Cuajiniquil","506",26791023,"bojorojoj@gmail.com");
+            //Numero factura 19
+
+            ClasesDatos.Emisor nuevoEmisor = new ClasesDatos.Emisor("EL BAJO ROJO DEL PACIFICO SOCIEDAD ANONIMA", "02","3101715950","5","10","04","02", "1 km oeste de la terminal pesquera Puerto de Mora.", "506",26791023,"bajorojoj@gmail.com");
 
 
             return nuevoEmisor;
@@ -656,24 +486,25 @@ namespace FacturaElectronicaCR_CS
         public List<ClasesDatos.DetallesFactura> crearDetallesFactura(string embarcacion) {
 
             //Aqui salen los codigos https://www.hacienda.go.cr/ATV/ComprobanteElectronico/docs/esquemas/2016/v4/ANEXOS%20Y%20ESTRUCTURAS.pdf
-
+           
+           
 
             //Se crea un objeto detalle que se va a agregar a la lista detalles
             ClasesDatos.DetallesFactura detalle = new ClasesDatos.DetallesFactura();
-            detalle.articuloCodigo ="2045";
-            detalle.articuloTipo ="04"; //Es decir de uso interno
-            detalle.cantidad ="10";
+            detalle.codigoArticulo="2345";
+            detalle.tipoDeArticulo ="04"; //Es decir de uso interno
+            detalle.cantidad = 10;
             detalle.codigoImpuesto ="01"; //Es decir de ventas
             detalle.detalle ="Dorado de primera";
-            detalle.impuestoMonto ="260"; // se calcula  (subtotal * porcentaje de impuesto 0.13)
-            detalle.impuestoTarifa ="13.00";
-            detalle.montoDescuento = "0.00000";
-            detalle.montoTotal ="2260";// subtotal + impuestos
-            detalle.montoTotalLinea ="2000";
-            detalle.natualezaDescuento ="Descuento al cliente";
-            detalle.numeroLinea ="1";
-            detalle.precioUnitario ="200";
-            detalle.subtotal ="2000"; // cantidad en kg por precio unitario
+            detalle.impuestoMonto =260; // se calcula  (subtotal * porcentaje de impuesto 0.13)
+            detalle.impuestoTarifa =13;
+            detalle.montoDescuento = 0;
+            detalle.montoTotal = 10*200;// Cantidad por precio unitario
+            detalle.montoTotalLinea = 2000+260;  //SUBTOTAL mas monto de impuesto
+            detalle.NaturalezaDescuento ="Descuento al cliente";
+            detalle.numeroDeLinea =1;
+            detalle.precioUnitario = 200;
+            detalle.subtotal = 2000-0; // Monto total-monto descuento concedido
             detalle.unidadDeMedida ="kg";
 
 
@@ -731,10 +562,7 @@ namespace FacturaElectronicaCR_CS
             }
 
         }
-
-
-
-
+        
         public static string CreaClave(string CodigoPais, string Dia, string Mes, string Anno, string NumeroIdentifiaccion, string NumeracionConsecutiva, string SituacionComprobante, string CodigoSeguridad)
         {
             // 'CodigoPais tres caracteres 
@@ -789,6 +617,8 @@ namespace FacturaElectronicaCR_CS
                     throw new Exception("Código seguridad no debe de superar los 8 caracteres");
                 }
 
+               
+
                 string Clave = "";
                 Clave = CodigoPais;
                 Clave = (Clave + Dia.PadLeft(2, '0'));
@@ -811,8 +641,7 @@ namespace FacturaElectronicaCR_CS
             }
 
         }
-
-   
+        
         public static string CreaCodigoSeguridad(string TipoComprobante, string Localidad,
                                         string CodigoPuntoVenta, DateTime Fecha,
                                         string NumeroFactura)
@@ -961,6 +790,18 @@ namespace FacturaElectronicaCR_CS
                 MessageBox.Show("Se produjo un error, volver a intentar mas tarde.");
             }
             
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Decimal a = 200;
+            Decimal b = 2;
+            Double c = 2000;
+
+            MessageBox.Show("Decimal "+ a);
+            MessageBox.Show("Decimal multi " + a*b);
+            MessageBox.Show("Double " + String.Format("{0:N3}", c.ToString()));
+
         }
     }
 }

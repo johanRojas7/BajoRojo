@@ -306,5 +306,7 @@ namespace pantallaDatosApp
             textBox1.Text = pesasMostrar;
             
         }
+
+     
     }
 }

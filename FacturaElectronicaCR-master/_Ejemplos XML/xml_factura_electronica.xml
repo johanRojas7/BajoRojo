@@ -34,6 +34,9 @@
   <MedioPago>04</MedioPago>
   <DetalleServicio>
     <LineaDetalle>
+      
+      
+      
       <NumeroLinea>1</NumeroLinea>
       <Codigo>
         <Tipo>04</Tipo>
@@ -55,6 +58,10 @@
       <MontoTotalLinea>161640.00000</MontoTotalLinea>
     </LineaDetalle>
     <LineaDetalle>
+      
+      
+      
+      
       <NumeroLinea>2</NumeroLinea>
       <Codigo>
         <Tipo>04</Tipo>
@@ -76,6 +83,9 @@
       <MontoTotalLinea>8836.60000</MontoTotalLinea>
     </LineaDetalle>
     <LineaDetalle>
+      
+      
+      
       <NumeroLinea>3</NumeroLinea>
       <Codigo>
         <Tipo>04</Tipo>
@@ -92,6 +102,9 @@
       <MontoTotalLinea>9345.00000</MontoTotalLinea>
     </LineaDetalle>
     <LineaDetalle>
+      
+      
+      
       <NumeroLinea>4</NumeroLinea>
       <Codigo>
         <Tipo>04</Tipo>
@@ -112,6 +125,9 @@
       </Impuesto>
       <MontoTotalLinea>9825.35000</MontoTotalLinea>
     </LineaDetalle>
+    
+    
+    
   </DetalleServicio>
   <ResumenFactura>
     <CodigoMoneda>CRC</CodigoMoneda>

@@ -38,6 +38,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace FacturaElectronicaCR_CS
 {
@@ -57,6 +58,8 @@ namespace FacturaElectronicaCR_CS
                 string URL_RECEPCION = "https://api.comprobanteselectronicos.go.cr/recepcion-sandbox/v1/";
 
                 HttpClient http = new HttpClient();
+             
+
 
                 Newtonsoft.Json.Linq.JObject JsonObject = new Newtonsoft.Json.Linq.JObject();
                 JsonObject.Add(new JProperty("clave", objRecepcion.clave));
@@ -65,7 +68,7 @@ namespace FacturaElectronicaCR_CS
                                              new JObject(new JProperty("tipoIdentificacion", objRecepcion.emisor.TipoIdentificacion),
                                                          new JProperty("numeroIdentificacion", objRecepcion.emisor.numeroIdentificacion))));
 
-                if (objRecepcion.receptor.sinReceptor == false) 
+                if ((objRecepcion.receptor.sinReceptor) == false) 
                 {
                     JsonObject.Add(new JProperty("receptor",
                                              new JObject(new JProperty("tipoIdentificacion", objRecepcion.receptor.TipoIdentificacion),
@@ -111,7 +114,11 @@ namespace FacturaElectronicaCR_CS
             }
             catch (Exception ex)
             {
-                throw ex;
+              
+                MessageBox.Show(ex.Message.ToString());
+
+                MessageBox.Show("En el momento de enviar el documento a Hacienda ocurrio un error.");
+                
             }
         }
 
