@@ -156,7 +156,7 @@
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(141, 42);
             this.btnProcesar.TabIndex = 30;
-            this.btnProcesar.Text = "Procesar Factura";
+            this.btnProcesar.Text = "Procesar Factura(2)";
             this.btnProcesar.UseVisualStyleBackColor = true;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
@@ -488,7 +488,7 @@
             this.botonVerificar.Name = "botonVerificar";
             this.botonVerificar.Size = new System.Drawing.Size(149, 37);
             this.botonVerificar.TabIndex = 98;
-            this.botonVerificar.Text = "Verificar";
+            this.botonVerificar.Text = "Crear Factura(1)";
             this.botonVerificar.UseVisualStyleBackColor = false;
             this.botonVerificar.Click += new System.EventHandler(this.button3_Click);
             // 

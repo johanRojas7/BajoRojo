@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistemaFacturacionPantallasPrincipales", "sistemaFacturacionPantallasPrincipales\sistemaFacturacionPantallasPrincipales.csproj", "{7CA6AA47-B979-4480-A07A-9B6C8AF50E27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantallaPrincipal", "sistemaFacturacionPantallasPrincipales\PantallaPrincipal.csproj", "{7CA6AA47-B979-4480-A07A-9B6C8AF50E27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pantallaPesasLiquidaciones", "pantallaPesasLiquidaciones\pantallaPesasLiquidaciones.csproj", "{A7E08716-1A9A-4CFF-AF07-B9C8AFE19F2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pesasApp", "pantallaPesasLiquidaciones\pesasApp.csproj", "{A7E08716-1A9A-4CFF-AF07-B9C8AFE19F2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pantallaDatosApp", "pantallaDatosApp\pantallaDatosApp.csproj", "{433AE06F-4F77-416F-9CBA-84E2C84F8540}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pantallas", "Pantallas", "{B994C519-9DBB-4D26-A603-15BABB141848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaElectronicaCR_CS", "FacturaElectronicaCR_CS\FacturaElectronicaCR_CS.csproj", "{AFA0696F-555B-4459-BEC8-E98F2CAD9076}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidacionesApp", "LiquidacionesApp\LiquidacionesApp.csproj", "{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pantallaReportes", "pantallaReportes\pantallaReportes.csproj", "{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturasApp", "FacturasApp\FacturasApp.csproj", "{0649747D-787E-43DB-AC71-82C61568153D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BajoDatos", "BajoDatos\BajoDatos.csproj", "{8931F55C-2585-4D7D-B385-4BF01BAC252F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +35,18 @@ Global
 		{433AE06F-4F77-416F-9CBA-84E2C84F8540}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433AE06F-4F77-416F-9CBA-84E2C84F8540}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433AE06F-4F77-416F-9CBA-84E2C84F8540}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFA0696F-555B-4459-BEC8-E98F2CAD9076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFA0696F-555B-4459-BEC8-E98F2CAD9076}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFA0696F-555B-4459-BEC8-E98F2CAD9076}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFA0696F-555B-4459-BEC8-E98F2CAD9076}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0649747D-787E-43DB-AC71-82C61568153D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0649747D-787E-43DB-AC71-82C61568153D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0649747D-787E-43DB-AC71-82C61568153D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0649747D-787E-43DB-AC71-82C61568153D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8931F55C-2585-4D7D-B385-4BF01BAC252F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8931F55C-2585-4D7D-B385-4BF01BAC252F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8931F55C-2585-4D7D-B385-4BF01BAC252F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8931F55C-2585-4D7D-B385-4BF01BAC252F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,8 +55,8 @@ Global
 		{7CA6AA47-B979-4480-A07A-9B6C8AF50E27} = {B994C519-9DBB-4D26-A603-15BABB141848}
 		{A7E08716-1A9A-4CFF-AF07-B9C8AFE19F2F} = {B994C519-9DBB-4D26-A603-15BABB141848}
 		{433AE06F-4F77-416F-9CBA-84E2C84F8540} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{AFA0696F-555B-4459-BEC8-E98F2CAD9076} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{8D7E6FA9-6372-4A3B-B0B3-5B7E41F359D0} = {B994C519-9DBB-4D26-A603-15BABB141848}
+		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA} = {B994C519-9DBB-4D26-A603-15BABB141848}
+		{0649747D-787E-43DB-AC71-82C61568153D} = {B994C519-9DBB-4D26-A603-15BABB141848}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA73DE71-F875-441A-A7F6-EBA8B216454C}

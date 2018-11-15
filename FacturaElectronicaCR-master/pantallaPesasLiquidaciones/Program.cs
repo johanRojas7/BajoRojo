@@ -16,7 +16,7 @@ namespace pantallaPesasLiquidaciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new pesasLiquidaciones());
+            Application.Run(new pantallaPesas());
         }
     }
 }

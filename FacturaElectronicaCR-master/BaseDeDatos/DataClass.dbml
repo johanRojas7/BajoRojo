@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NuevaBase" Class="DataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NuevaBase.mdf;Integrated Security=True" SettingsObjectName="BaseDeDatos.Properties.Settings" SettingsPropertyName="NuevaBaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.liquidacion" Member="liquidacion">
+    <Type Name="liquidacion">
+      <Column Name="embarcacion" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="detalle" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="procedencia" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="monto" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pesa" Member="pesa">
+    <Type Name="pesa">
+      <Column Name="embarcacion" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tipoPescado" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="pesa" Member="pesa1" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pesaCalculada" Member="pesaCalculada">
+    <Type Name="pesaCalculada">
+      <Column Name="embarcacion" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fecha" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="tipoPescado" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ToatlPesa" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="montoTotalPesa" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

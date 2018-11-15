@@ -14,9 +14,10 @@ namespace pantallaDatosApp
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatosApp());
+            Application.Run(new pantallaDatosApp());
         }
     }
 }

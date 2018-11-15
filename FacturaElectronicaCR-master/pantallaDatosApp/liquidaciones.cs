@@ -20,7 +20,7 @@ namespace pantallaDatosApp
             detalle = pDetalle;
             procedencia = pProcedencia;
             monto = pMonto;
-            
+           
         }
     }
 }

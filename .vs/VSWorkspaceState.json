@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\FacturaElectronicaCR-master"
+    "\\FacturaElectronicaCR-master",
+    "\\FacturaElectronicaCR-master\\FacturaElectronicaCR_CS",
+    "\\FacturaElectronicaCR-master\\FacturaElectronicaCR_CS\\ClasesDatos",
+    "\\FacturaElectronicaCR-master\\_Ejemplos XML"
   ],
-  "SelectedNode": "\\FacturaElectronicaCR-master\\sistemaFacturacionPantallasPrincipales",
+  "SelectedNode": "\\FacturaElectronicaCR-master\\_Ejemplos XML\\xml_factura_electronica.xml",
   "PreviewInSolutionExplorer": false
 }

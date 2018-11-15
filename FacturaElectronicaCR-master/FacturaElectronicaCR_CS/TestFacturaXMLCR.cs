@@ -15,7 +15,7 @@ namespace FacturaElectronicaCR_CS
     public partial class TestFacturaXMLCR : Form
     {
 
-        public string numeroComprobante = "0000000001";
+        public string numeroComprobante = "0000000033";
         public string clave = "";
         public string numeroConsecutivo = "";
         public string xmlFactura = "";
@@ -375,7 +375,7 @@ namespace FacturaElectronicaCR_CS
                 CrearConsecutivo();
                 crearClave();
 
-                ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo, clave, crearEmisor(embarcacionSeleccionada), crearReceptor("Bajo Rojo"), condicionVenta, "0", medioDePago, crearDetallesFactura(embarcacionSeleccionada), "CRC", 1);
+                ClasesDatos.FacturaElectronicaCR nuevaFactura = new ClasesDatos.FacturaElectronicaCR(numeroConsecutivo, clave, crearEmisor(embarcacionSeleccionada), crearReceptor("Bajo Rojo"),"01", "0","04", crearDetallesFactura(embarcacionSeleccionada), "CRC", 1);
 
 
                 xmlFactura = GetXMLAsString(nuevaFactura.CreaXMLFacturaElectronica());
