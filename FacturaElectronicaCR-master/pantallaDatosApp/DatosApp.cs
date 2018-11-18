@@ -26,8 +26,10 @@ namespace pantallaDatosApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Boolean resultado = false;
            
-            if ((txtPesas.Text == "") || (txtFolderSalidaLiquidaciones.Text == ""))
+            if ((txtPesas.Text == ""))
             {
                 MessageBox.Show("Algun campo esta vacio.");
 
@@ -42,25 +44,26 @@ namespace pantallaDatosApp
                     foreach (var x in pesasEmbarcaciones())
                     {
                         BajoDatos.PesasDatos nuevaPesa = new BajoDatos.PesasDatos();
-                        nuevaPesa.Insertar(x.embarcacion.ToString(), x.tipoPescado.ToString(), x.pesa.ToString());
+                       resultado= nuevaPesa.Insertar(x.embarcacion.ToString(), x.tipoPescado.ToString(), x.pesa.ToString());
 
                     }
 
-                    foreach (var y in liquidacion())
+
+                    if (resultado == false)
                     {
-                        BajoDatos.LiquidacionesDatos nuevaLiquidacion = new BajoDatos.LiquidacionesDatos();
-                        nuevaLiquidacion.Insertar(y.embarcacion.ToString(), y.detalle.ToString(), y.procedencia.ToString(), y.monto.ToString());
-
+                        MessageBox.Show("Datos guardados correctamente.");
+                        txtPesas.Text = "";
                     }
-
-                    txtFolderSalidaLiquidaciones.Text = "";
-                    txtPesas.Text = "";
+                    else { MessageBox.Show("Error a la hora de ingresar los datos."); }
+                   
+                    
+                    
                     
 
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    txtFolderSalidaLiquidaciones.Text = "";
+                   
                     txtPesas.Text = "";
                    
                     MessageBox.Show("Proceso cancelado");
@@ -76,66 +79,34 @@ namespace pantallaDatosApp
 
 
         //Permite cargar en una lista las liquidaciones que se encuentran en un txt
-        public List<liquidaciones> liquidacion() {
-
-
-            List<liquidaciones> lista = new List<liquidaciones>();
-
-            using (var reader = new StreamReader(txtFolderSalidaLiquidaciones.Text))
-            {
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                   liquidaciones nuevaLiquidacion = new liquidaciones(values[0].Replace("\0", ""), values[1].Replace("\0", ""), values[2].Replace("\0", ""), values[3].Replace("\0", ""));
-                    lista.Add(nuevaLiquidacion);
-                   
-                }
-            }
-
-            
-            return lista;
-        }
-
+        
         //Permite cargar en una lista las pesas que se encuentran en un txt
         public List<pesas> pesasEmbarcaciones() {
             List<pesas> lista = new List<pesas>();
-            
-            using (var reader = new StreamReader(txtFolderSalidaLiquidaciones.Text))
+            try
             {
-
-                while (!reader.EndOfStream)
+                using (var reader = new StreamReader(txtPesas.Text))
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    pesas nuevaPesa = new pesas(values[0].Replace("\0", ""), values[1].Replace("\0", ""), values[2].Replace("\0", ""));
-                    lista.Add(nuevaPesa);
 
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        pesas nuevaPesa = new pesas(values[0].Replace("\0", ""), values[1].Replace("\0", ""), values[2].Replace("\0", ""));
+                        lista.Add(nuevaPesa);
+
+                    }
                 }
+
             }
-            
+            catch {
+
+            }
             return lista;
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                OpenFileDialog iFile = new OpenFileDialog();
-                iFile.ShowDialog();
-                this.txtFolderSalidaLiquidaciones.Text = iFile.FileName;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
+   
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -151,5 +122,21 @@ namespace pantallaDatosApp
             }
         }
 
+        private void txtPesas_TextChanged(object sender, EventArgs e)
+        {
+
+            string resultado = "";
+            foreach (var x in pesasEmbarcaciones())
+            {
+
+                resultado = resultado + "Embarcacion: " + x.embarcacion.ToString() + ", Tipo de Pescado: " + x.tipoPescado.ToString() + ", Pesa: " + x.pesa.ToString()+ " \n";
+              
+
+            }
+
+            textBox1.Text = resultado;
+         
+
+        }
     }
 }

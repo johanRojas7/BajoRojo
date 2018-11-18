@@ -23,12 +23,21 @@ namespace FacturasApp
         private void botonBuscarLiquidacion_Click(object sender, EventArgs e)
         {
 
-            string embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
+            dt.Rows.Clear();
+            try
+            {
+                string embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
 
-            BajoDatos.FacturasDatos nuevaBusqueda = new BajoDatos.FacturasDatos();
-            datos.DataSource = nuevaBusqueda.Buscar(embarcacion);
-            llenarTablaDT();
+                BajoDatos.FacturasDatos nuevaBusqueda = new BajoDatos.FacturasDatos();
+                datos.DataSource = nuevaBusqueda.Buscar(embarcacion);
+                llenarTablaDT();
+            }
 
+            catch {
+                MessageBox.Show("Ocurrio un error. Verifique bien embarcacion seleccionada.");
+
+
+            }
 
 
             
@@ -86,10 +95,9 @@ namespace FacturasApp
             {
                 string nombre = (string)this.dt.Rows[e.RowIndex].Cells["id"].Value;
                 
-               //ENVIAR STRING NOMBRE A FACTURA
-
-                MessageBox.Show(buscarFactura(nombre));
-              //  CrearDocumento(buscarFactura(nombre));
+               
+              CrearDocumento(buscarFactura(nombre));
+                Imprimir();
             }
         }
 
@@ -120,33 +128,10 @@ namespace FacturasApp
             doc.Add(new Paragraph("Factura control de pesas"));
             doc.Add(Chunk.NEWLINE);
 
-            // Creamos una tabla que contendrá el nombre, apellido y país
-            // de nuestros visitante.
-            PdfPTable tblPrueba = new PdfPTable(3);
-            tblPrueba.WidthPercentage = 100;
 
-            // Configuramos el título de las columnas de la tabla
-            PdfPCell clNombre = new PdfPCell(new Phrase("Embarcacion", _standardFont));
-            clNombre.BorderWidth = 0;
-            clNombre.BorderWidthBottom = 0.75f;
+          
 
-            PdfPCell clApellido = new PdfPCell(new Phrase("Total de pesas", _standardFont));
-            clApellido.BorderWidth = 0;
-            clApellido.BorderWidthBottom = 0.75f;
-
-            PdfPCell clPais = new PdfPCell(new Phrase("Total de kg", _standardFont));
-            clPais.BorderWidth = 0;
-            clPais.BorderWidthBottom = 0.75f;
-
-            // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(clNombre);
-            tblPrueba.AddCell(clApellido);
-            tblPrueba.AddCell(clPais);
-
-            
-
-            // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
-            doc.Add(tblPrueba);
+            doc.Add(new Paragraph(datos));
 
 
 
@@ -156,5 +141,7 @@ namespace FacturasApp
 
 
         }
+
+        
     }
 }
