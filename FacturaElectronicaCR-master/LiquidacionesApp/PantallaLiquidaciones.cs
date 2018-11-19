@@ -22,10 +22,11 @@ namespace LiquidacionesApp
         private void botonBuscarPesa_Click(object sender, EventArgs e)
         {
             String embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
-
-            BajoDatos.LiquidacionesDatos nuevaBusqueda = new BajoDatos.LiquidacionesDatos();
-            datos.DataSource = nuevaBusqueda.BuscarRegistro(embarcacion);
-            datos.Columns.Remove("embarcacion");
+            
+            
+                BajoDatos.LiquidacionesDatos nuevaBusqueda = new BajoDatos.LiquidacionesDatos();
+                datos.DataSource = nuevaBusqueda.BuscarRegistro(embarcacion);
+                datos.Columns.Remove("embarcacion");
             
             
            // total();

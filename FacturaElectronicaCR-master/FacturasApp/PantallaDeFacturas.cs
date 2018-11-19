@@ -23,14 +23,30 @@ namespace FacturasApp
         private void botonBuscarLiquidacion_Click(object sender, EventArgs e)
         {
 
-            dt.Rows.Clear();
             try
             {
-                string embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
+                foreach (var series in chart1.Series)
+                {
+                    series.Points.Clear();
+                }
 
-                BajoDatos.FacturasDatos nuevaBusqueda = new BajoDatos.FacturasDatos();
-                datos.DataSource = nuevaBusqueda.Buscar(embarcacion);
-                llenarTablaDT();
+
+                if (todo.Checked) {
+
+                    BajoDatos.FacturasDatos busquedaGeneral = new BajoDatos.FacturasDatos();
+                    datos.DataSource = busquedaGeneral.BuscarTodos();
+                    GenerarTodos();
+
+                }
+
+
+                if (individual.Checked) {
+                    BajoDatos.FacturasDatos busquedaGeneral = new BajoDatos.FacturasDatos();
+                    datos.DataSource = busquedaGeneral.Buscar(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString());
+                    Especifico();
+                }
+
+               
             }
 
             catch {
@@ -39,109 +55,149 @@ namespace FacturasApp
 
             }
 
-
             
         }
 
-        private void llenarTablaDT() {
-            int contador = 1;
+
+        private void Especifico() {
+            List<objeto> lista = new List<objeto>();
+
+            Boolean SeEncontroAlgo = false;
+
+
             foreach (DataGridViewRow fila in datos.Rows)
             {
-                if (datos.Rows.Count - 1 >= contador)
+
+                try
                 {
+                    foreach (var x in lista)
+                    {
 
-            dt.Rows.Add(fila.Cells[0].Value.ToString(), fila.Cells[1].Value.ToString(), fila.Cells[2].Value.ToString(),"Imprimir");
+                        try
+                        {
 
-                }
+                            //si el pezcado de la lista es igual al de el data, entonces se suma la pesa.
+                            if (x.embarca == fila.Cells[1].Value.ToString())
+                            {
 
-                contador++;
+                                x.monto = x.monto + Convert.ToDouble(fila.Cells[2].Value.ToString());
+                                SeEncontroAlgo = true;
+                            }
 
-
-            }
-
-
-            }
-
-
-        private string buscarFactura(string id) {
-            string factura = "";
-
-            int contador = 1;
-            foreach (DataGridViewRow fila in datos.Rows)
-            {
-                if (datos.Rows.Count - 1 >= contador)
-                {
+                        }
+                        catch { }
 
 
-
-                    if (fila.Cells[0].Value.ToString()==id) {
-
-                        factura = fila.Cells[3].Value.ToString();
                     }
+                    if (SeEncontroAlgo == false)
+                    {
+                        objeto nuevo = new objeto(fila.Cells[1].Value.ToString(), Convert.ToDouble(fila.Cells[2].Value.ToString()));
+                        lista.Add(nuevo);
+                    }
+                    if (SeEncontroAlgo == true) { SeEncontroAlgo = false; }
+
+
+
+
+
 
                 }
-
-                contador++;
-
+                catch { }
 
             }
-
-            return factura;
-        }
-
-        private void dt_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (this.dt.Columns[e.ColumnIndex].Name == "ii")
+            double rangoMayor = ObtenerMayor(lista);
+            foreach (var j in lista)
             {
-                string nombre = (string)this.dt.Rows[e.RowIndex].Cells["id"].Value;
-                
                
-              CrearDocumento(buscarFactura(nombre));
-                Imprimir();
+                this.chart1.Series["KG"].Points.AddXY(j.embarca, map(j.monto, 0, rangoMayor, 0, 100));
+
             }
-        }
-
-        private void Imprimir() {
-            System.Diagnostics.Process.Start(@"C:\Users\johan\Documents\Bajo Rojo\prueba.pdf");
-        }
-
-        private void CrearDocumento(string datos) {
-
-            // Creamos el documento con el tamaño de página tradicional
-            Document doc = new Document(PageSize.LETTER);
-            // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc,
-                                        new FileStream(@"C:\Users\johan\Documents\Bajo Rojo\prueba.pdf", FileMode.Create));
-
-            // Le colocamos el título y el autor
-            // **Nota: Esto no será visible en el documento
-            doc.AddTitle("Factura control de pesas");
-            doc.AddCreator("Bajo Rojo del pacifico s.a");
-
-            // Abrimos el archivo
-            doc.Open();
-
-            // Creamos el tipo de Font que vamos utilizar
-            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-            // Escribimos el encabezamiento en el documento
-            doc.Add(new Paragraph("Factura control de pesas"));
-            doc.Add(Chunk.NEWLINE);
-
-
-          
-
-            doc.Add(new Paragraph(datos));
-
-
-
-            doc.Close();
-            writer.Close();
 
 
 
         }
 
-        
+        private void GenerarTodos() {
+            List<objeto> lista = new List<objeto>();
+
+            Boolean SeEncontroAlgo = false;
+
+
+            foreach (DataGridViewRow fila in datos.Rows)
+            {
+
+                try
+                {
+
+                   
+                    foreach (var x in lista)
+                    {
+
+                        try
+                        {
+                            
+                            //si el pezcado de la lista es igual al de el data, entonces se suma la pesa.
+                            if (x.embarca == fila.Cells[0].Value.ToString())
+                            {
+
+                                x.monto = x.monto + Convert.ToDouble(fila.Cells[2].Value.ToString());
+                                SeEncontroAlgo = true;
+                            }
+
+                        }
+                        catch { }
+
+
+                    }
+                    if (SeEncontroAlgo == false)
+                    {
+                        objeto nuevo = new objeto(fila.Cells[0].Value.ToString(),Convert.ToDouble(fila.Cells[2].Value.ToString()));
+                        lista.Add(nuevo);
+                    }
+                    if (SeEncontroAlgo == true) { SeEncontroAlgo = false; }
+
+
+
+
+
+
+                }
+                catch { }
+
+            }
+
+            double rangoMayor = ObtenerMayor(lista);
+
+            foreach (var j in lista) {
+              
+            this.chart1.Series["KG"].Points.AddXY(j.embarca, map(j.monto, 0,rangoMayor, 0, 100));
+
+            }
+
+
+        }
+
+
+        private double ObtenerMayor(List<objeto> lista) {
+            double resultado = 0;
+
+            foreach (var x in lista) {
+
+                if (x.monto > resultado) {
+                    resultado = x.monto;
+                }
+
+            }
+
+            return resultado;
+        }
+     
+
+        private double map(double x, double in_min, double in_max, double out_min, double out_max)
+        {
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
+     
     }
 }

@@ -40,6 +40,37 @@ namespace BajoDatos
             else return false;
         }
 
+        public DataTable BuscarBajoRojo(string embarcacion)
+        {
+            List<String> Users = new List<String>();
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("select * from BajoRojo where Embarcacion like '%{0}%'", embarcacion), conexion);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+
+            ds = new DataSet();
+            ad.Fill(ds, "tabla");
+            conexion.Close();
+            return ds.Tables["tabla"];
+        }
+
+        public bool InsertarBajoRojo(string Embarcacion, string TipoPescado, string Pesa)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("insert into BajoRojo values ('{0}', '{1}', '{2}')", new string[] { Embarcacion, TipoPescado, Pesa }), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
+        public bool EliminarBajo(string embarcacion)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("delete from Pesas where Embarcacion like '%{0}%'", embarcacion), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
         public bool Eliminar(string embarcacion)
         {
             conexion.Open();

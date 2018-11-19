@@ -176,6 +176,8 @@
             this.datos2.Name = "datos2";
             this.datos2.Size = new System.Drawing.Size(460, 395);
             this.datos2.TabIndex = 95;
+            this.datos2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datos2_CellValueChanged);
+           
             // 
             // pescado
             // 

@@ -68,7 +68,7 @@
             this.botonFaturacion.Name = "botonFaturacion";
             this.botonFaturacion.Size = new System.Drawing.Size(156, 47);
             this.botonFaturacion.TabIndex = 0;
-            this.botonFaturacion.Text = "Facturas";
+            this.botonFaturacion.Text = "Estadisticas";
             this.botonFaturacion.UseVisualStyleBackColor = true;
             this.botonFaturacion.Click += new System.EventHandler(this.botonFaturacion_Click);
             // 

@@ -20,7 +20,7 @@ namespace BajoDatos
         public DataTable Buscar(string nombre)
         {
             conexion.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("select * from faturas where embarcacion like '%{0}%'", nombre), conexion);
+            SqlCommand cmd = new SqlCommand(string.Format("select * from estadistica where embarcacion like '%{0}%'", nombre), conexion);
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             ds = new DataSet();
             ad.Fill(ds, "tabla");
@@ -28,10 +28,21 @@ namespace BajoDatos
             return ds.Tables["tabla"];
         }
 
-        public bool Insertar(string fecha, string embarcacion, string leyenda)
+        public DataTable BuscarTodos()
         {
             conexion.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("insert into faturas values ('{1}', '{2}','{3}')", new string[] { "",fecha, embarcacion,leyenda }), conexion);
+            SqlCommand cmd = new SqlCommand(string.Format("select * from estadistica"), conexion);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            ad.Fill(ds, "tabla");
+            conexion.Close();
+            return ds.Tables["tabla"];
+        }
+
+        public bool Insertar(string embarcacion, string pez, string pesa)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("insert into estadistica values ('{1}', '{2}','{3}')", new string[] { "", embarcacion,pez,pesa }), conexion);
             int filasafectadas = cmd.ExecuteNonQuery();
             conexion.Close();
             if (filasafectadas > 0) return true;
