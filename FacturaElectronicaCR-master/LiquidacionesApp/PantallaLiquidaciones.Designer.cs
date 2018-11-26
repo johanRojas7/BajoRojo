@@ -131,6 +131,7 @@
             this.datos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datos.Location = new System.Drawing.Point(12, 92);
             this.datos.Name = "datos";
+            this.datos.ReadOnly = true;
             this.datos.Size = new System.Drawing.Size(173, 63);
             this.datos.TabIndex = 27;
             this.datos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datos_CellDoubleClick);
@@ -216,6 +217,7 @@
             this.datos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datos2.Location = new System.Drawing.Point(12, 161);
             this.datos2.Name = "datos2";
+            this.datos2.ReadOnly = true;
             this.datos2.Size = new System.Drawing.Size(373, 150);
             this.datos2.TabIndex = 36;
             // 

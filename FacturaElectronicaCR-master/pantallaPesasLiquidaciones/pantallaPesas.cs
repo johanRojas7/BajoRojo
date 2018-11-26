@@ -165,6 +165,9 @@ namespace pantallaPesasLiquidaciones
                 BajoDatos.PesasDatos eliminarPesa = new BajoDatos.PesasDatos();
                 eliminarPesa.Eliminar(embarcacion);
 
+               
+                datos2.DataSource = null;
+
                 CrearDocumento(fechaActual,GenerarLista(),MontoTotalDinero.Text);
                 Imprimir();
                 
@@ -316,5 +319,6 @@ namespace pantallaPesasLiquidaciones
            
         }
 
+      
     }
 }

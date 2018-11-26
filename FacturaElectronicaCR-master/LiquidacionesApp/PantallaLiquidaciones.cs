@@ -21,15 +21,20 @@ namespace LiquidacionesApp
 
         private void botonBuscarPesa_Click(object sender, EventArgs e)
         {
-            String embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
-            
-            
+            try {
+                String embarcacion = comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString();
+
+
                 BajoDatos.LiquidacionesDatos nuevaBusqueda = new BajoDatos.LiquidacionesDatos();
                 datos.DataSource = nuevaBusqueda.BuscarRegistro(embarcacion);
                 datos.Columns.Remove("embarcacion");
+
+            }
+            catch { MessageBox.Show("Ocurrio un error."); }
             
             
-           // total();
+            
+          
 
 
         }
@@ -37,40 +42,49 @@ namespace LiquidacionesApp
    
         private void button1_Click(object sender, EventArgs e)
         {
-            String embarcacion = combo.SelectedItem.ToString();
-            //Crear nueva liquidacion
 
-            DialogResult dialogResult = MessageBox.Show("Desea crear una nueva hoja de alistos? ", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+            try {
+                String embarcacion = combo.SelectedItem.ToString();
+                //Crear nueva liquidacion
 
-            if (dialogResult == DialogResult.Yes)
-            {
+                DialogResult dialogResult = MessageBox.Show("Desea crear una nueva hoja de alistos? ", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
 
-                if (embarcacion != "")
+                if (dialogResult == DialogResult.Yes)
                 {
 
-
-                    DateTime hoy = DateTime.Now;
-                    string fechaActual = hoy.ToString("dd-MM-yyyy");
-                    try
-                    {
-                        BajoDatos.LiquidacionesDatos nuevaLiquidacion = new BajoDatos.LiquidacionesDatos();
-                        nuevaLiquidacion.InsertarRegistro(embarcacion, fechaActual);
-
-                        MessageBox.Show("Exito: Nueva hoja de liquidacion creada.");
-                    }
-
-                    catch
+                    if (embarcacion != "")
                     {
 
-                        MessageBox.Show("Error: Ocurrio algo inesperado y no se creo la hoja de liquidacion.");
+
+                        DateTime hoy = DateTime.Now;
+                        string fechaActual = hoy.ToString("dd-MM-yyyy");
+                        try
+                        {
+                            BajoDatos.LiquidacionesDatos nuevaLiquidacion = new BajoDatos.LiquidacionesDatos();
+                            nuevaLiquidacion.InsertarRegistro(embarcacion, fechaActual);
+
+                            MessageBox.Show("Exito: Nueva hoja de liquidacion creada.");
+                        }
+
+                        catch
+                        {
+
+                            MessageBox.Show("Error: Ocurrio algo inesperado y no se creo la hoja de liquidacion.");
+                        }
                     }
-                }
-                else {
-                    MessageBox.Show("Debe seleccionar una embarcacion");
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar una embarcacion");
+
+                    }
 
                 }
+            }
+            catch {
+                MessageBox.Show("Ocurrio un error.");
 
             }
+            
 
 
                 
@@ -158,39 +172,47 @@ namespace LiquidacionesApp
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string resumen = "Resumen de liquidacion: "+"\n"+"Procedencia: "+procedencia.Text+"\n"+"Detalle: "+detalle.Text+"\n" +"Monto economico: ₡"+ String.Format("{0:n}",Convert.ToDouble(monto.Text));
-            
-            MessageBox.Show(resumen);
 
-            DialogResult dialogResult = MessageBox.Show("Desea agregar esta nueva liquidacion?", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
-
-            if (dialogResult == DialogResult.Yes)
+            try
             {
+                string resumen = "Resumen de liquidacion: " + "\n" + "Procedencia: " + procedencia.Text + "\n" + "Detalle: " + detalle.Text + "\n" + "Monto economico: ₡" + String.Format("{0:n}", Convert.ToDouble(monto.Text));
 
-                if (comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString() == "" || fechaSeleccionada == "" || detalle.Text == "" || procedencia.Text == "" || monto.Text == "") { MessageBox.Show("Hay datos erroneos o vacios."); }
-                else
+                MessageBox.Show(resumen);
+
+                DialogResult dialogResult = MessageBox.Show("Desea agregar esta nueva liquidacion?", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
                 {
-                    try
+
+                    if (comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString() == "" || fechaSeleccionada == "" || detalle.Text == "" || procedencia.Text == "" || monto.Text == "") { MessageBox.Show("Hay datos erroneos o vacios."); }
+                    else
                     {
-                        BajoDatos.LiquidacionesDatos nuevaBusqueda = new BajoDatos.LiquidacionesDatos();
-                        nuevaBusqueda.Insertar(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString(), fechaSeleccionada, detalle.Text, procedencia.Text, monto.Text);
-                        datos.DataSource = null;
-                        datos2.DataSource = null;
-                        fechaSeleccionada = "";
-                        detalle.Text = "";
-                        procedencia.Text = "";
-                        monto.Text = "";
+                        try
+                        {
+                            BajoDatos.LiquidacionesDatos nuevaBusqueda = new BajoDatos.LiquidacionesDatos();
+                            nuevaBusqueda.Insertar(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString(), fechaSeleccionada, detalle.Text, procedencia.Text, monto.Text);
+                            datos.DataSource = null;
+                            datos2.DataSource = null;
+                            fechaSeleccionada = "";
+                            detalle.Text = "";
+                            procedencia.Text = "";
+                            monto.Text = "";
 
 
-                        MessageBox.Show("Liquidacion correctamente agregada.");
-                    }
-                    catch
-                    {
+                            MessageBox.Show("Liquidacion correctamente agregada.");
+                        }
+                        catch
+                        {
 
-                        MessageBox.Show("Error al insertar nueva liquidacion");
+                            MessageBox.Show("Error al insertar nueva liquidacion");
+                        }
                     }
                 }
             }
+            catch {
+                MessageBox.Show("Ocurrio un error.");
+            }
+           
            
         }
 
@@ -241,32 +263,42 @@ namespace LiquidacionesApp
 
         {
 
-            string resumen = "";
-            resumen = "Resumen de abono."+"\n"+"Monto total: "+String.Format("{0:n}", Convert.ToDouble(montoEconomico.Text));
-            MessageBox.Show(resumen);
-            DialogResult dialogResult = MessageBox.Show("Desea agregar esta nuevo abono?", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+            try {
+                string resumen = "";
+                resumen = "Resumen de abono." + "\n" + "Monto total: " + String.Format("{0:n}", Convert.ToDouble(montoEconomico.Text));
+                MessageBox.Show(resumen);
+                DialogResult dialogResult = MessageBox.Show("Desea agregar esta nuevo abono?", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
 
-            if (dialogResult == DialogResult.Yes)
-            {
-                if (montoEconomico.Text == "") { MessageBox.Show("Debe de ingresar un monto economico"); }
-                else
+                if (dialogResult == DialogResult.Yes)
                 {
-                    try
+                    if (montoEconomico.Text == "") { MessageBox.Show("Debe de ingresar un monto economico"); }
+                    else
                     {
+                        try
+                        {
 
-                        BajoDatos.LiquidacionesDatos nuevoAbono = new BajoDatos.LiquidacionesDatos();
-                        nuevoAbono.InsertarAbono(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString(), fechaSeleccionada, montoEconomico.Text);
-                        MessageBox.Show("Agregado correctamente.");
-                        montoEconomico.Text = "";
+                            BajoDatos.LiquidacionesDatos nuevoAbono = new BajoDatos.LiquidacionesDatos();
+                            nuevoAbono.InsertarAbono(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString(), fechaSeleccionada, montoEconomico.Text);
+                            MessageBox.Show("Agregado correctamente.");
+                            montoEconomico.Text = "";
 
 
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Error al ingresar datos");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error al ingresar datos");
+                        }
                     }
                 }
             }
+            catch {
+                MessageBox.Show("Ocurrio un error.");
+
+            }
+            
+
+
+
         }
     }
 }

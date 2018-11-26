@@ -27,7 +27,7 @@ namespace pantallaDatosApp
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Boolean resultado = false;
+         
            
             if ((txtPesas.Text == ""))
             {
@@ -44,17 +44,14 @@ namespace pantallaDatosApp
                     foreach (var x in pesasEmbarcaciones())
                     {
                         BajoDatos.PesasDatos nuevaPesa = new BajoDatos.PesasDatos();
-                       resultado= nuevaPesa.Insertar(x.embarcacion.ToString(), x.tipoPescado.ToString(), x.pesa.ToString());
+                        nuevaPesa.Insertar(x.embarcacion.ToString(), x.tipoPescado.ToString(), x.pesa.ToString());
 
                     }
 
 
-                    if (resultado == false)
-                    {
                         MessageBox.Show("Datos guardados correctamente.");
                         txtPesas.Text = "";
-                    }
-                    else { MessageBox.Show("Error a la hora de ingresar los datos."); }
+                  
                    
                     
                     
@@ -129,12 +126,13 @@ namespace pantallaDatosApp
             foreach (var x in pesasEmbarcaciones())
             {
 
-                resultado = resultado + "Embarcacion: " + x.embarcacion.ToString() + ", Tipo de Pescado: " + x.tipoPescado.ToString() + ", Pesa: " + x.pesa.ToString()+ " \n";
+                resultado = resultado + "Embarcacion: " + x.embarcacion.ToString() + ", Tipo de Pescado: " + x.tipoPescado.ToString() + ", Pesa: " + x.pesa.ToString()+ "\n";
               
 
             }
 
-            textBox1.Text = resultado;
+            richTextBox1.Text = resultado;
+        
          
 
         }
