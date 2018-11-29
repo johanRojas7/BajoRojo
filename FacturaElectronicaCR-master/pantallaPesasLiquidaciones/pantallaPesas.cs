@@ -26,41 +26,49 @@ namespace pantallaPesasLiquidaciones
         private void botonBuscar_Click(object sender, EventArgs e)
         {
             datos2.Rows.Clear();
-            String embarcacion = comboBoxEmbarcacion.SelectedItem.ToString();
-            if (embarcacion == "Bajo Rojo")
+
+            try
             {
-                //Aqui se procede a llenar la tabla normalmente solo que esta vez se accesa a una nueva tabla
-                BajoDatos.PesasDatos nuevaBusqueda = new BajoDatos.PesasDatos();
-                datos.DataSource = nuevaBusqueda.BuscarBajoRojo("A") ;
-
-                datos.Columns.Remove("Embarcacion");
-                CrearLista();
-
-                foreach (var j in lista)
+                String embarcacion = comboBoxEmbarcacion.SelectedItem.ToString();
+                if (embarcacion == "Bajo Rojo")
                 {
+                    //Aqui se procede a llenar la tabla normalmente solo que esta vez se accesa a una nueva tabla
+                    BajoDatos.PesasDatos nuevaBusqueda = new BajoDatos.PesasDatos();
+                    datos.DataSource = nuevaBusqueda.BuscarBajoRojo("A");
 
-                    datos2.Rows.Add(j.pez, Convert.ToString(j.monto), "", "");
+                    datos.Columns.Remove("Embarcacion");
+                    CrearLista();
+
+                    foreach (var j in lista)
+                    {
+
+                        datos2.Rows.Add(j.pez, Convert.ToString(j.monto), "", "");
+
+                    }
 
                 }
-
-            }
-            else
-            {
-
-                BajoDatos.PesasDatos nuevaBusqueda = new BajoDatos.PesasDatos();
-                datos.DataSource = nuevaBusqueda.Buscar(embarcacion);
-
-                datos.Columns.Remove("Embarcacion");
-                CrearLista();
-
-                foreach (var j in lista)
+                else
                 {
 
-                    datos2.Rows.Add(j.pez, Convert.ToString(j.monto), "", "");
+                    BajoDatos.PesasDatos nuevaBusqueda = new BajoDatos.PesasDatos();
+                    datos.DataSource = nuevaBusqueda.Buscar(embarcacion);
+
+                    datos.Columns.Remove("Embarcacion");
+                    CrearLista();
+
+                    foreach (var j in lista)
+                    {
+
+                        datos2.Rows.Add(j.pez, Convert.ToString(j.monto), "", "");
+
+                    }
 
                 }
-
             }
+            catch { MessageBox.Show("Ocurrio un error."); }
+
+
+          
 
         }
 
@@ -253,8 +261,8 @@ namespace pantallaPesasLiquidaciones
             // Indicamos donde vamos a guardar el documento
            
             PdfWriter writer = PdfWriter.GetInstance(doc,
-                                        new FileStream(@"C:\Users\johan\Documents\Bajo Rojo\factura.pdf", FileMode.Create));
-
+                                        new FileStream(Environment.SpecialFolder.Desktop.ToString(), FileMode.Create));
+           
             // Le colocamos el título y el autor
             // **Nota: Esto no será visible en el documento
             doc.AddTitle("Factura control de pesas");
@@ -315,7 +323,7 @@ namespace pantallaPesasLiquidaciones
         private void Imprimir()
         {
             
-            System.Diagnostics.Process.Start(@"C:\Users\johan\Documents\Bajo Rojo\factura.pdf");
+            System.Diagnostics.Process.Start(Environment.SpecialFolder.Desktop.ToString());
            
         }
 

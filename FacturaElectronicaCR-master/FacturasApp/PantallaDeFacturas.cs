@@ -198,6 +198,24 @@ namespace FacturasApp
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try {
+                DialogResult dialogResult = MessageBox.Show("Desea limpiar todos los datos? ", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    BajoDatos.FacturasDatos eliminarTodo = new BajoDatos.FacturasDatos();
+                    eliminarTodo.Eliminar();
+                    MessageBox.Show("Exito.");
+                }
+                else { MessageBox.Show("Proceso cancelado"); }
+                 
+            }
+            catch {
+
+                MessageBox.Show("Ocurrio un error a la hora de eliminar");
+            }
+        }
     }
 }

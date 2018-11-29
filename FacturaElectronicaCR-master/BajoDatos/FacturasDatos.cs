@@ -48,5 +48,15 @@ namespace BajoDatos
             if (filasafectadas > 0) return true;
             else return false;
         }
+
+        public bool Eliminar()
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("delete from estadistica"), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
     }
 }
