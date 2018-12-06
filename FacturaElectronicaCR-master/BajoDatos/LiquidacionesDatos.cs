@@ -13,7 +13,25 @@ namespace BajoDatos
         private SqlConnection conexion = new SqlConnection("Data Source = LAPTOP-RSSABEQP; Initial Catalog = BajoRojo; Integrated Security = true");
         private DataSet ds;
 
+        public bool Eliminar(string embarcacion)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("delete from Liquidaciones where embarcacion like '%{0}%'", embarcacion), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
 
+        public bool EliminarRegistro(string embarcacion)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("delete from liquidacionRegistro where embarcacion like '%{0}%'", embarcacion), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
 
         public DataTable Buscar(string nombre, string fecha)
         {

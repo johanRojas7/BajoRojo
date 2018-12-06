@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pesasApp", "pantallaPesasLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pantallaDatosApp", "pantallaDatosApp\pantallaDatosApp.csproj", "{433AE06F-4F77-416F-9CBA-84E2C84F8540}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pantallas", "Pantallas", "{B994C519-9DBB-4D26-A603-15BABB141848}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidacionesApp", "LiquidacionesApp\LiquidacionesApp.csproj", "{9B09B32F-7D4D-454E-9435-F6E1D70C35FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturasApp", "FacturasApp\FacturasApp.csproj", "{0649747D-787E-43DB-AC71-82C61568153D}"
@@ -50,13 +48,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7CA6AA47-B979-4480-A07A-9B6C8AF50E27} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{A7E08716-1A9A-4CFF-AF07-B9C8AFE19F2F} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{433AE06F-4F77-416F-9CBA-84E2C84F8540} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{9B09B32F-7D4D-454E-9435-F6E1D70C35FA} = {B994C519-9DBB-4D26-A603-15BABB141848}
-		{0649747D-787E-43DB-AC71-82C61568153D} = {B994C519-9DBB-4D26-A603-15BABB141848}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA73DE71-F875-441A-A7F6-EBA8B216454C}

@@ -105,11 +105,11 @@ namespace FacturasApp
                 catch { }
 
             }
-            double rangoMayor = ObtenerMayor(lista);
+           
             foreach (var j in lista)
             {
                
-                this.chart1.Series["KG"].Points.AddXY(j.embarca, map(j.monto, 0, rangoMayor, 0, 100));
+                this.chart1.Series["KG"].Points.AddXY(j.embarca,j.monto);
 
             }
 
@@ -166,11 +166,11 @@ namespace FacturasApp
 
             }
 
-            double rangoMayor = ObtenerMayor(lista);
+           
 
             foreach (var j in lista) {
               
-            this.chart1.Series["KG"].Points.AddXY(j.embarca, map(j.monto, 0,rangoMayor, 0, 100));
+            this.chart1.Series["KG"].Points.AddXY(j.embarca,j.monto);
 
             }
 
@@ -178,25 +178,8 @@ namespace FacturasApp
         }
 
 
-        private double ObtenerMayor(List<objeto> lista) {
-            double resultado = 0;
 
-            foreach (var x in lista) {
-
-                if (x.monto > resultado) {
-                    resultado = x.monto;
-                }
-
-            }
-
-            return resultado;
-        }
-     
-
-        private double map(double x, double in_min, double in_max, double out_min, double out_max)
-        {
-            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

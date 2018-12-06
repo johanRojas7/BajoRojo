@@ -1,8 +1,11 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -305,5 +308,128 @@ namespace LiquidacionesApp
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Desea imprimir el alisto?", "Bajo Rojo del Pacifico ", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                try
+                {
+                    BajoDatos.LiquidacionesDatos borrarLiquidacion = new BajoDatos.LiquidacionesDatos();
+                    DateTime hoy = DateTime.Now;
+                    string fechaActual = hoy.ToString("dd-MM-yyyy");
+                    CrearDocumento(fechaActual,GenerarLista());
+                    Imprimir();
+                    borrarLiquidacion.Eliminar(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString());
+                    borrarLiquidacion.EliminarRegistro(comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString());
+
+
+                }
+                catch { MessageBox.Show("Ocurrio un error a la hora de imprimir."); }
+            }
+        }
+
+        private void CrearDocumento(string fecha, List<ObjetoFactura> lista)
+        {
+
+            // Creamos el documento con el tamaño de página tradicional
+            Document doc = new Document(PageSize.LETTER);
+            // Indicamos donde vamos a guardar el documento
+
+            PdfWriter writer = PdfWriter.GetInstance(doc,
+                                        new FileStream(@"C:\Users\johan\Documents\Bajo Rojo\Liquidacion.pdf", FileMode.Create));
+
+            // Le colocamos el título y el autor
+            // **Nota: Esto no será visible en el documento
+            doc.AddTitle("Hoja de Liquidaciones.");
+            doc.AddCreator("Bajo Rojo del pacifico s.a");
+
+            // Abrimos el archivo
+            doc.Open();
+
+            iTextSharp.text.Image imagen = iTextSharp.text.Image.GetInstance(@"C:\Users\johan\Documents\Bajo Rojo\Bajo.png");
+            imagen.BorderWidth = 0;
+            imagen.Alignment = Element.ALIGN_LEFT;
+            float percentage = 0.0f;
+            percentage = 500 / imagen.Width;
+            imagen.ScalePercent(percentage * 100);
+
+            // Insertamos la imagen en el documento
+            doc.Add(imagen);
+
+            // Creamos el tipo de Font que vamos utilizar
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            // Escribimos el encabezamiento en el documento
+            doc.Add(new Paragraph("Hoja de Liquidaciones"));
+       
+
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Paragraph("Embarcacion: " + comboBoxEmbarcacionpLiquidacion.SelectedItem.ToString() + ",  Fecha: " + fecha));
+            doc.Add(Chunk.NEWLINE);
+
+            PdfPTable table = new PdfPTable(3);
+
+            table.AddCell("Procedencia");
+            table.AddCell("Detalle");
+            table.AddCell("Monto");
+            
+
+            foreach (var x in lista)
+            {
+
+                table.AddCell(x.procedencia);
+                table.AddCell(x.descripcion);
+                table.AddCell(x.monto);
+               
+
+            }
+
+
+
+
+            doc.Add(table);
+
+            doc.Add(new Paragraph("Monto total de alistos: " + totalAlistos.Text));
+            doc.Add(new Paragraph("Monto total de productos: " + totalAbonos.Text));
+            doc.Add(new Paragraph("Total a pagar: " + totalPagar.Text));
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Close();
+            writer.Close();
+
+
+
+        }
+        private void Imprimir()
+        {
+
+            System.Diagnostics.Process.Start(@"C:\Users\johan\Documents\Bajo Rojo\Liquidacion.pdf");
+
+        }
+        private List<ObjetoFactura> GenerarLista()
+        {
+            List<ObjetoFactura> lista = new List<ObjetoFactura>();
+            foreach (DataGridViewRow fila in datos2.Rows)
+            {
+                try
+                {
+                    ObjetoFactura nuevoObjeto = new ObjetoFactura(fila.Cells[0].Value.ToString(), fila.Cells[1].Value.ToString(), fila.Cells[2].Value.ToString());
+                    lista.Add(nuevoObjeto);
+                }
+                catch { }
+
+
+            }
+
+
+            return lista;
+        }
+
+
+
     }
 }

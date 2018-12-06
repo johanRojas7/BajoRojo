@@ -15,7 +15,26 @@ namespace BajoDatos
         private SqlConnection conexion = new SqlConnection("Data Source = LAPTOP-RSSABEQP; Initial Catalog = BajoRojo; Integrated Security = true");
         private DataSet ds;
 
-
+        public DataTable BuscarConsecutivo(string nombre)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("select * from Consecutivos where embarcacion like '%{0}%'", nombre), conexion);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            
+            ds = new DataSet();
+            ad.Fill(ds, "tabla");
+            conexion.Close();
+            return ds.Tables["tabla"];
+        }
+        public bool ActualizarConsecutivo(string embarcacion, string numero)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("UPDATE into Consecutivos values ('{1}', '{2}')", new string[] { "", embarcacion,numero }), conexion);
+            int filasafectadas = cmd.ExecuteNonQuery();
+            conexion.Close();
+            if (filasafectadas > 0) return true;
+            else return false;
+        }
 
         public DataTable Buscar(string nombre)
         {

@@ -65,7 +65,7 @@ namespace BajoDatos
         public bool EliminarBajo(string embarcacion)
         {
             conexion.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("delete from Pesas where Embarcacion like '%{0}%'", embarcacion), conexion);
+            SqlCommand cmd = new SqlCommand(string.Format("delete from BajoRojo where Embarcacion like '%{0}%'", embarcacion), conexion);
             int filasafectadas = cmd.ExecuteNonQuery();
             conexion.Close();
             if (filasafectadas > 0) return true;

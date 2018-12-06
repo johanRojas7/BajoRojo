@@ -44,6 +44,7 @@
             this.TotalPesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalLinea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datos2)).BeginInit();
             this.SuspendLayout();
@@ -103,7 +104,6 @@
             this.datos.Name = "datos";
             this.datos.Size = new System.Drawing.Size(279, 81);
             this.datos.TabIndex = 19;
-            this.datos.Visible = false;
             // 
             // label18
             // 
@@ -177,7 +177,6 @@
             this.datos2.Name = "datos2";
             this.datos2.Size = new System.Drawing.Size(460, 395);
             this.datos2.TabIndex = 95;
-            
             this.datos2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.datos2_CellValueChanged);
             // 
             // pescado
@@ -203,12 +202,26 @@
             this.TotalLinea.Name = "TotalLinea";
             this.TotalLinea.ReadOnly = true;
             // 
+            // button2
+            // 
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(527, 203);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 27);
+            this.button2.TabIndex = 96;
+            this.button2.Text = "Prueba";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // pantallaPesas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(913, 524);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.datos2);
             this.Controls.Add(this.MontoTotalDinero);
             this.Controls.Add(this.MontoTotalPesasKg);
@@ -247,6 +260,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPesa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalLinea;
+        private System.Windows.Forms.Button button2;
     }
 }
 
